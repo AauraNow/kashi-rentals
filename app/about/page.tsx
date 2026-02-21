@@ -31,12 +31,12 @@ export default function AboutPage() {
               Banaras is at your own pace, discovering hidden lanes, ghats, and temples that standard tourist packages miss.
             </p>
             <p>
-              Having served thousands of tourists, students, and local residents, we've built a reputation for
+              Having served thousands of tourists, students, and local residents, we&apos;ve built a reputation for
               reliability, transparent pricing, and exceptional customer service. Our fleet of well-maintained scootys
               and bikes ensures that you have a safe and comfortable ride throughout your journey in Kashi.
             </p>
             <p>
-              Whether you're a foreign tourist visiting for spiritual awakening, a BHU student needing daily transport,
+              Whether you&apos;re a foreign tourist visiting for spiritual awakening, a BHU student needing daily transport,
               or a domestic traveler exploring the cultural heritage, we have the perfect two-wheeler solution for you.
             </p>
           </div>

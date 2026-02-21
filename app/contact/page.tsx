@@ -199,7 +199,7 @@ Message: ${formData.message}`;
                   <a href={`mailto:${email}`} className="text-primary-600 font-bold hover:underline">
                     {email}
                   </a>
-                  <p className="text-dark-600 mt-2">We'll respond within 24 hours</p>
+                  <p className="text-dark-600 mt-2">We&apos;ll respond within 24 hours</p>
                 </div>
 
                 <div className="bg-dark-50 p-6 rounded-lg border border-dark-200">
@@ -229,7 +229,7 @@ Message: ${formData.message}`;
         <div className="container-custom text-center">
           <h2 className="heading-md mb-6">Find Us</h2>
           <p className="text-dark-600 mb-4">
-            We're located near Varanasi Cantt Railway Station. Easy to reach from all parts of the city.
+            We&apos;re located near Varanasi Cantt Railway Station. Easy to reach from all parts of the city.
           </p>
           <div className="bg-white p-8 rounded-lg border border-dark-200 max-w-4xl mx-auto">
             <p className="text-lg text-dark-700">

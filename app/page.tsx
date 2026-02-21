@@ -226,7 +226,7 @@ export default function HomePage() {
               <div className="text-4xl mb-4">🛡️</div>
               <h3 className="text-2xl font-bold mb-3">24/7 Support</h3>
               <p className="text-dark-600">
-                Round-the-clock roadside assistance and customer support. Breakdown? We'll replace your vehicle within 2 hours.
+                Round-the-clock roadside assistance and customer support. Breakdown? We&apos;ll replace your vehicle within 2 hours.
               </p>
             </div>
 
@@ -277,7 +277,7 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <Link
-                  href={vehicle.type === 'Scooty' ? '/scooty-rental-in-varanasi' : '/bike-rental-in-varanasi'}
+                  href={vehicle.type === 'scooty' ? '/scooty-rental-in-varanasi' : '/bike-rental-in-varanasi'}
                   className="btn-outline w-full text-center block"
                 >
                   Rent Now

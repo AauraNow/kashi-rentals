@@ -93,7 +93,7 @@ export default function TermsPage() {
                 <p>All vehicles covered with third-party insurance.</p>
                 <p>Rider is responsible for personal safety and any injuries.</p>
                 <p>Customer liable for damages to vehicle during rental period.</p>
-                <p>Traffic violations and fines are customer's responsibility.</p>
+                <p>Traffic violations and fines are customer&apos;s responsibility.</p>
                 <p>Theft or total loss requires police FIR and full vehicle cost.</p>
               </div>
             </div>

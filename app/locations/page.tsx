@@ -55,7 +55,7 @@ export default function LocationsPage() {
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg text-dark-700 mb-6">
               We provide scooty and bike rental services across all major tourist and residential areas in Varanasi.
-              Whether you're staying near the railway station, university campus, or the ghats, we've got you covered.
+              Whether you&apos;re staying near the railway station, university campus, or the ghats, we&apos;ve got you covered.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-dark-800">
               <div>✓ Railway Stations</div>
@@ -74,7 +74,7 @@ export default function LocationsPage() {
       {/* CTA */}
       <section className="section-padding bg-primary-600 text-white">
         <div className="container-custom text-center">
-          <h2 className="heading-lg mb-4">Can't Find Your Location?</h2>
+          <h2 className="heading-lg mb-4">Can&apos;t Find Your Location?</h2>
           <p className="text-xl mb-8">Contact us! We offer delivery across Varanasi.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">

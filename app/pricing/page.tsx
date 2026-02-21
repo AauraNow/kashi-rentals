@@ -85,7 +85,7 @@ export default function PricingPage() {
       {/* Included Features */}
       <section className="section-padding bg-dark-50">
         <div className="container-custom">
-          <h2 className="heading-md text-center mb-12">What's Included in Rental Price</h2>
+          <h2 className="heading-md text-center mb-12">What&apos;s Included in Rental Price</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {rentalFeatures.map((feature, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">

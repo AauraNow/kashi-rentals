@@ -118,7 +118,7 @@ export default function ScootyRentalPage() {
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="text-4xl mb-3">🛣️</div>
               <h3 className="text-xl font-bold mb-2">Navigate Narrow Lanes</h3>
-              <p className="text-dark-700">Varanasi's old city has narrow lanes where scootys are the best mode of transport. Cars and autos can't reach many areas.</p>
+              <p className="text-dark-700">Varanasi&apos;s old city has narrow lanes where scootys are the best mode of transport. Cars and autos can&apos;t reach many areas.</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="text-4xl mb-3">💰</div>
@@ -143,7 +143,7 @@ export default function ScootyRentalPage() {
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="text-4xl mb-3">🌤️</div>
               <h3 className="text-xl font-bold mb-2">All-Weather Riding</h3>
-              <p className="text-dark-700">Scootys are perfect for Varanasi's weather. Easy to handle in traffic and comfortable in heat.</p>
+              <p className="text-dark-700">Scootys are perfect for Varanasi&apos;s weather. Easy to handle in traffic and comfortable in heat.</p>
             </div>
           </div>
         </div>
