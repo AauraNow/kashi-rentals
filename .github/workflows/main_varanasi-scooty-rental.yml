@@ -36,7 +36,7 @@ jobs:
           cp -r public deploy/public
           mkdir -p deploy/.next/static
           cp -r .next/static/. deploy/.next/static/
-          cp package.json deploy/package.json
+          cp package.deploy.json deploy/package.json
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
