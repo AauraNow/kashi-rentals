@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "About Us | Varanasi's Trusted Scooty & Bike Rental Service",
   description: "Learn about Varanasi Bike Rental - your trusted partner for affordable scooty and bike rental in Banaras. Quality vehicles, transparent pricing, 24/7 support.",
   alternates: {
-    canonical: 'https://varanasibikerental.com/about',
+    canonical: 'https://rentals.awakenais.com/about',
   },
 };
 

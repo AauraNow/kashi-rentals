@@ -29,12 +29,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     description: location.metaDescription,
     keywords: location.keywords,
     alternates: {
-      canonical: `https://varanasibikerental.com/locations/${location.slug}`,
+      canonical: `https://rentals.awakenais.com/locations/${location.slug}`,
     },
     openGraph: {
       title: location.title,
       description: location.metaDescription,
-      url: `https://varanasibikerental.com/locations/${location.slug}`,
+      url: `https://rentals.awakenais.com/locations/${location.slug}`,
       type: 'website',
     },
   };
@@ -68,19 +68,19 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://varanasibikerental.com"
+        "item": "https://rentals.awakenais.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Locations",
-        "item": "https://varanasibikerental.com/locations"
+        "item": "https://rentals.awakenais.com/locations"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": location.name,
-        "item": `https://varanasibikerental.com/locations/${location.slug}`
+        "item": `https://rentals.awakenais.com/locations/${location.slug}`
       }
     ]
   };

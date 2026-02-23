@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Terms and Conditions | Varanasi Bike Rental",
   description: "Terms and conditions for scooty and bike rental in Varanasi. Rental agreement, policies, and guidelines.",
   alternates: {
-    canonical: 'https://varanasibikerental.com/terms-and-conditions',
+    canonical: 'https://rentals.awakenais.com/terms-and-conditions',
   },
   robots: {
     index: true,

@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://varanasibikerental.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rentals.awakenais.com';
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

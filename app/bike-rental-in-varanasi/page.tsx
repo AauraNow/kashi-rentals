@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "bike on rent near me varanasi"
   ],
   alternates: {
-    canonical: 'https://varanasibikerental.com/bike-rental-in-varanasi',
+    canonical: 'https://rentals.awakenais.com/bike-rental-in-varanasi',
   },
 };
 

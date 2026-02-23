@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "kashi travel blog"
   ],
   alternates: {
-    canonical: 'https://varanasibikerental.com/blog',
+    canonical: 'https://rentals.awakenais.com/blog',
   },
 };
 

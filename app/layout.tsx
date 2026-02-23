@@ -16,7 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://varanasibikerental.com'),
+  metadataBase: new URL('https://rentals.awakenais.com'),
   title: {
     default: "Scooty & Bike Rental in Varanasi | Affordable Self Drive Starting ₹299/day",
     template: "%s | Varanasi Bike Rental"
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://varanasibikerental.com',
+    url: 'https://rentals.awakenais.com',
     title: 'Scooty & Bike Rental in Varanasi | Starting ₹299/day',
     description: 'Affordable scooty and bike rental in Varanasi. Self-drive two wheeler rental near BHU, Assi Ghat, Cantt. Book now!',
     siteName: 'Varanasi Bike Rental',

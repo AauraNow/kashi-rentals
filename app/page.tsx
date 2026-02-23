@@ -25,12 +25,12 @@ export const metadata: Metadata = {
     "affordable bike rental banaras"
   ],
   alternates: {
-    canonical: 'https://varanasibikerental.com',
+    canonical: 'https://rentals.awakenais.com',
   },
   openGraph: {
     title: "Scooty & Bike Rental in Varanasi | Starting ₹299/day",
     description: "Explore Varanasi with affordable scooty and bike rental. Self-drive two wheeler starting ₹299/day.",
-    url: 'https://varanasibikerental.com',
+    url: 'https://rentals.awakenais.com',
     type: 'website',
   },
 };
@@ -75,10 +75,10 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Varanasi Bike Rental",
-    "image": "https://varanasibikerental.com/logo.png",
+    "image": "https://rentals.awakenais.com/logo.png",
     "description": "Affordable scooty and bike rental service in Varanasi. Self-drive two-wheeler rental starting ₹299/day.",
-    "@id": "https://varanasibikerental.com",
-    "url": "https://varanasibikerental.com",
+    "@id": "https://rentals.awakenais.com",
+    "url": "https://rentals.awakenais.com",
     "telephone": "+917348745464",
     "priceRange": "₹₹",
     "address": {

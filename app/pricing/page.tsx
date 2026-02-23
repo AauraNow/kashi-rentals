@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "affordable bike rental kashi"
   ],
   alternates: {
-    canonical: 'https://varanasibikerental.com/pricing',
+    canonical: 'https://rentals.awakenais.com/pricing',
   },
 };
 

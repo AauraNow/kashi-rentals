@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
     description: data.description,
     keywords: data.keywords,
     alternates: {
-      canonical: `https://varanasibikerental.com/blog/${params.slug}`,
+      canonical: `https://rentals.awakenais.com/blog/${params.slug}`,
     },
   };
 }

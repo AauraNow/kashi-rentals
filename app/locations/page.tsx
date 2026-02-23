@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "all location bike rental banaras"
   ],
   alternates: {
-    canonical: 'https://varanasibikerental.com/locations',
+    canonical: 'https://rentals.awakenais.com/locations',
   },
 };
 

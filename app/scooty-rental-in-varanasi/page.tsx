@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "scooty on rent near me varanasi"
   ],
   alternates: {
-    canonical: 'https://varanasibikerental.com/scooty-rental-in-varanasi',
+    canonical: 'https://rentals.awakenais.com/scooty-rental-in-varanasi',
   },
 };
 
