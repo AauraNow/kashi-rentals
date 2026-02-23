@@ -3,6 +3,7 @@ import Link from 'next/link';
 export default function Footer() {
   const phoneNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+91 98765 43210';
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+  const businessEmail = process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'info@varanasibikerental.com';
 
   return (
     <footer className="bg-dark-900 text-white">
@@ -17,7 +18,7 @@ export default function Footer() {
             </p>
             <div className="text-dark-300">
               <p>📍 Near Varanasi Cantt Station</p>
-              <p>✉️ info@varanasibikerental.com</p>
+              <p>✉️ {businessEmail}</p>
             </div>
           </div>
 

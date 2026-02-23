@@ -1,5 +1,9 @@
 import { Metadata } from 'next';
 
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+const phoneNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+91 98765 43210';
+const businessEmail = process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'info@varanasibikerental.com';
+
 export const metadata: Metadata = {
   title: "Terms and Conditions | Varanasi Bike Rental",
   description: "Terms and conditions for scooty and bike rental in Varanasi. Rental agreement, policies, and guidelines.",
@@ -152,9 +156,9 @@ export default function TermsPage() {
             <div className="bg-primary-50 border-2 border-primary-200 p-6 rounded-lg">
               <h2 className="text-2xl font-bold mb-4 text-dark-900">Contact Information</h2>
               <div className="space-y-2 text-dark-700">
-                <p><strong>Phone:</strong> +91 98765 43210</p>
-                <p><strong>WhatsApp:</strong> +91 98765 43210</p>
-                <p><strong>Email:</strong> info@varanasibikerental.com</p>
+                <p><strong>Phone:</strong> {phoneNumber}</p>
+                <p><strong>WhatsApp:</strong> {phoneNumber}</p>
+                <p><strong>Email:</strong> {businessEmail}</p>
                 <p><strong>Address:</strong> Near Varanasi Cantt Railway Station, Varanasi - 221002</p>
               </div>
             </div>
