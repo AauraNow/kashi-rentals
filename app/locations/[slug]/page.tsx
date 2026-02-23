@@ -5,6 +5,9 @@ import { getLocationBySlug, getAllLocationSlugs } from '@/lib/locations';
 import FAQItem from '@/components/FAQItem';
 import StructuredData from '@/components/StructuredData';
 
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+const phoneNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+91 98765 43210';
+
 export async function generateStaticParams() {
   const slugs = getAllLocationSlugs();
   return slugs.map((slug) => ({
@@ -102,7 +105,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             <Link href="/contact" className="btn-primary">
               Book Now in {location.name}
             </Link>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="btn-outline">
+            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="btn-outline">
               WhatsApp Booking
             </a>
             <Link href="/pricing" className="btn-secondary">
@@ -242,8 +245,8 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">
               Book Now
             </Link>
-            <a href="tel:+919876543210" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
-              Call: +91 98765 43210
+            <a href={`tel:${phoneNumber}`} className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
+              Call: {phoneNumber}
             </a>
           </div>
         </div>

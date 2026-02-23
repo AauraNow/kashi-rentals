@@ -2,6 +2,7 @@
 
 export default function FloatingCTA() {
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+  const phoneNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+91 98765 43210';
 
   return (
     <>
@@ -22,7 +23,7 @@ export default function FloatingCTA() {
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-dark-200 p-4 z-40 shadow-2xl">
         <div className="flex gap-2">
           <a
-            href="tel:+919876543210"
+            href={`tel:${phoneNumber}`}
             className="flex-1 bg-dark-800 text-white py-3 px-4 rounded-lg font-semibold text-center hover:bg-dark-900 transition-colors"
           >
             📞 Call Now

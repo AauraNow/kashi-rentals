@@ -3,6 +3,9 @@ import Link from 'next/link';
 import FAQItem from '@/components/FAQItem';
 import StructuredData from '@/components/StructuredData';
 
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+const phoneNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+91 98765 43210';
+
 export const metadata: Metadata = {
   title: "Scooty Rental in Varanasi | Honda Activa & TVS Jupiter from ₹299/day",
   description: "Best scooty rental in Varanasi, Banaras, Kashi. Honda Activa, TVS Jupiter, Hero Pleasure available. Self-drive scooty near BHU, Assi, Cantt, Lanka from ₹299/day.",
@@ -54,7 +57,7 @@ export default function ScootyRentalPage() {
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/contact" className="btn-primary text-lg">Book Scooty Now</Link>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="btn-outline text-lg">WhatsApp Booking</a>
+            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="btn-outline text-lg">WhatsApp Booking</a>
             <Link href="/pricing" className="btn-secondary text-lg">View Pricing</Link>
           </div>
         </div>
@@ -253,8 +256,8 @@ export default function ScootyRentalPage() {
             <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">
               Book Scooty Now
             </Link>
-            <a href="tel:+919876543210" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
-              Call: +91 98765 43210
+            <a href={`tel:${phoneNumber}`} className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
+              Call: {phoneNumber}
             </a>
           </div>
         </div>

@@ -3,6 +3,8 @@ import Link from 'next/link';
 import LocationCard from '@/components/LocationCard';
 import { locations } from '@/lib/locations';
 
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+
 export const metadata: Metadata = {
   title: "Scooty & Bike Rental Locations in Varanasi | All Areas Covered",
   description: "Find scooty and bike rental across all areas of Varanasi including Sigra, BHU, Assi Ghat, Lanka, Cantt, Mahmoorganj, Godowlia, Sarnath. Flexible pickup points.",
@@ -80,7 +82,7 @@ export default function LocationsPage() {
             <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">
               Contact Us
             </Link>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
+            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
               WhatsApp Us
             </a>
           </div>

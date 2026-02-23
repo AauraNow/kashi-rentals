@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { pricingPlans, rentalFeatures, requiredDocuments } from '@/lib/pricing';
 import StructuredData from '@/components/StructuredData';
 
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+
 export const metadata: Metadata = {
   title: "Scooty & Bike Rental Pricing in Varanasi | Starting ₹299/day",
   description: "Transparent pricing for scooty and bike rental in Varanasi. Daily, weekly, monthly rates. Scooty ₹299/day, Bike ₹499/day. No hidden charges. View all rates.",
@@ -182,7 +184,7 @@ export default function PricingPage() {
             <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">
               Book Now
             </Link>
-            <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
+            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
               WhatsApp for Quote
             </a>
           </div>
