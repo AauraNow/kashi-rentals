@@ -105,7 +105,7 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
             <Link href="/contact" className="btn-primary">
               Book Now in {location.name}
             </Link>
-            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="btn-outline">
+            <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi! I need a scooty or bike rental near ${location.name}, Varanasi. Can you confirm availability and pricing?`)}`} target="_blank" rel="noopener noreferrer" className="btn-outline">
               WhatsApp Booking
             </a>
             <Link href="/pricing" className="btn-secondary">

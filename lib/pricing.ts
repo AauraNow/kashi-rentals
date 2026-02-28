@@ -113,9 +113,7 @@ export const rentalFeatures = [
   "24/7 Roadside Assistance",
   "Flexible Pickup & Drop",
   "Well-Maintained Vehicles",
-  "Full Insurance Coverage",
   "No Hidden Charges",
-  "Unlimited Kilometers",
   "Fuel Efficient Vehicles"
 ];
 

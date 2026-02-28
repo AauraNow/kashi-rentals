@@ -58,9 +58,9 @@ export default function AboutPage() {
               <p className="text-dark-600">No hidden charges. What you see is what you pay. Starting ₹299/day</p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-md text-center">
-              <div className="text-5xl mb-4">🛡️</div>
-              <h3 className="text-xl font-bold mb-3">Full Insurance</h3>
-              <p className="text-dark-600">All vehicles covered with comprehensive third-party insurance</p>
+              <div className="text-5xl mb-4">�</div>
+              <h3 className="text-xl font-bold mb-3">Regular Servicing</h3>
+              <p className="text-dark-600">Every vehicle is checked and serviced before each rental for a safe, smooth ride</p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-md text-center">
               <div className="text-5xl mb-4">📍</div>

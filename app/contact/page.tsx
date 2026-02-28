@@ -40,7 +40,6 @@ Message: ${formData.message}`;
       <section className="bg-gradient-to-br from-primary-50 to-white section-padding">
         <div className="container-custom text-center">
           <h1 className="heading-xl mb-6">Contact Kashi Rentals</h1>
-          <p className="text-xs text-gray-500 mb-2">Parent company: awakenais</p>
           <p className="text-xl text-dark-700 max-w-3xl mx-auto">
             Ready to explore Varanasi? Fill the form below or reach us directly via WhatsApp or phone.
           </p>
@@ -177,7 +176,6 @@ Message: ${formData.message}`;
                     {phoneNumber}
                   </a>
                   <p className="text-dark-600 mt-2">Available 7 AM - 9 PM Daily</p>
-                  <p className="text-xs text-gray-500 mt-2">Kashi Rentals is a brand of awakenais</p>
                 </div>
 
                 <div className="bg-dark-50 p-6 rounded-lg border border-dark-200">

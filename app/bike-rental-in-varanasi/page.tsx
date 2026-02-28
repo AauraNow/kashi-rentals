@@ -52,7 +52,7 @@ export default function BikeRentalPage() {
           <p className="text-xl text-dark-700 mb-6 max-w-4xl">
             Rent Royal Enfield Classic 350, Bajaj Pulsar, Honda CB Shine bikes in Varanasi, Banaras, Kashi.
             Perfect for highway rides to Sarnath, Ramnagar, and beyond. Self-drive motorcycle rental with
-            full insurance coverage.
+            well-maintained vehicles and 24/7 roadside support.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/contact" className="btn-primary text-lg">Book Bike Now</Link>
@@ -198,7 +198,7 @@ export default function BikeRentalPage() {
             />
             <FAQItem
               question="What's included in bike rental price?"
-              answer="Helmet, insurance, 24/7 support included. Fuel not included - you refuel as needed."
+              answer="Helmet and 24/7 roadside support included. Fuel not included - you refuel as needed."
             />
             <FAQItem
               question="Can two people ride comfortably?"

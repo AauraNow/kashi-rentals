@@ -82,7 +82,7 @@ export default function LocationsPage() {
             <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">
               Contact Us
             </Link>
-            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
+            <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hi! I need a scooty or bike rental in Varanasi. Can you help me find the nearest pickup location and check availability?')}`} target="_blank" rel="noopener noreferrer" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
               WhatsApp Us
             </a>
           </div>

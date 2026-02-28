@@ -165,11 +165,7 @@ export default function PricingPage() {
             </div>
             <div className="bg-dark-50 p-6 rounded-lg">
               <h3 className="font-bold text-lg mb-2">📏 Kilometer Limit</h3>
-              <p>Unlimited kilometers. Ride as much as you want within Varanasi and nearby areas.</p>
-            </div>
-            <div className="bg-dark-50 p-6 rounded-lg">
-              <h3 className="font-bold text-lg mb-2">🛡️ Insurance</h3>
-              <p>Basic third-party insurance included. Rider responsible for own safety and traffic violations.</p>
+              <p>Rides within Varanasi city and nearby areas. For outstation trips, please inform us in advance.</p>
             </div>
           </div>
         </div>
@@ -184,7 +180,7 @@ export default function PricingPage() {
             <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">
               Book Now
             </Link>
-            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
+            <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hi! I\'d like to know the pricing for scooty/bike rentals in Varanasi. Can you share the rates, available vehicles, and any current offers?')}`} target="_blank" rel="noopener noreferrer" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
               WhatsApp for Quote
             </a>
           </div>
