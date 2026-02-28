@@ -75,7 +75,7 @@ export default function HomePage() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Varanasi Bike Rental",
+    "name": "Kashi Rentals",
     "image": "https://rentals.awakenais.com/logo.png",
     "description": "Affordable scooty and bike rental service in Varanasi. Self-drive two-wheeler rental starting ₹299/day.",
     "@id": "https://rentals.awakenais.com",
@@ -196,7 +196,7 @@ export default function HomePage() {
       {/* Why Choose Us */}
       <section className="section-padding bg-primary-50">
         <div className="container-custom">
-          <h2 className="heading-lg text-center mb-12">Why Choose Varanasi Bike Rental?</h2>
+          <h2 className="heading-lg text-center mb-12">Why Choose Kashi Rentals?</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow">

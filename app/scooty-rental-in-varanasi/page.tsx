@@ -29,7 +29,7 @@ export default function ScootyRentalPage() {
     "serviceType": "Scooty Rental",
     "provider": {
       "@type": "LocalBusiness",
-      "name": "Varanasi Bike Rental"
+      "name": "Kashi Rentals"
     },
     "areaServed": {
       "@type": "City",

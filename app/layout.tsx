@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://rentals.awakenais.com'),
   title: {
     default: "Scooty & Bike Rental in Varanasi | Affordable Self Drive Starting ₹299/day",
-    template: "%s | Varanasi Bike Rental"
+    template: "%s | Kashi Rentals"
   },
   description: "Affordable scooty and bike rental in Varanasi, Banaras, Kashi. Self-drive two wheeler rental near BHU, Assi Ghat, Cantt, Sigra, Lanka. Starting ₹299/day. Book now!",
   keywords: [
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     "activa rental varanasi",
     "honda dio rental banaras"
   ],
-  authors: [{ name: "Varanasi Bike Rental" }],
-  creator: "Varanasi Bike Rental",
-  publisher: "Varanasi Bike Rental",
+  authors: [{ name: "Kashi Rentals" }],
+  creator: "Kashi Rentals",
+  publisher: "Kashi Rentals",
   formatDetection: {
     email: false,
     address: false,
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     url: 'https://rentals.awakenais.com',
     title: 'Scooty & Bike Rental in Varanasi | Starting ₹299/day',
     description: 'Affordable scooty and bike rental in Varanasi. Self-drive two wheeler rental near BHU, Assi Ghat, Cantt. Book now!',
-    siteName: 'Varanasi Bike Rental',
+    siteName: 'Kashi Rentals',
   },
   twitter: {
     card: 'summary_large_image',

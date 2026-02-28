@@ -28,7 +28,7 @@ export default function BikeRentalPage() {
     "serviceType": "Bike Rental",
     "provider": {
       "@type": "LocalBusiness",
-      "name": "Varanasi Bike Rental"
+      "name": "Kashi Rentals"
     },
     "areaServed": {
       "@type": "City",

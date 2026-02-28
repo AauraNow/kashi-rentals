@@ -31,7 +31,7 @@ export default function PricingPage() {
     "availability": "https://schema.org/InStock",
     "seller": {
       "@type": "LocalBusiness",
-      "name": "Varanasi Bike Rental"
+      "name": "Kashi Rentals"
     }
   };
 

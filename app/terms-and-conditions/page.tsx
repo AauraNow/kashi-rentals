@@ -5,7 +5,7 @@ const phoneNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+91 98765 43210';
 const businessEmail = process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'info@varanasibikerental.com';
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | Varanasi Bike Rental",
+  title: "Terms and Conditions | Kashi Rentals",
   description: "Terms and conditions for scooty and bike rental in Varanasi. Rental agreement, policies, and guidelines.",
   alternates: {
     canonical: 'https://rentals.awakenais.com/terms-and-conditions',
@@ -34,9 +34,9 @@ export default function TermsPage() {
             <div>
               <h2 className="text-2xl font-bold mb-4 text-dark-900">1. Rental Agreement</h2>
               <div className="space-y-3 text-dark-700">
-                <p>By renting a vehicle from Varanasi Bike Rental, you agree to these terms and conditions.</p>
+                <p>By renting a vehicle from Kashi Rentals, you agree to these terms and conditions.</p>
                 <p>The renter must be at least 18 years old and hold a valid driving license.</p>
-                <p>The rental agreement is between the customer and Varanasi Bike Rental.</p>
+                <p>The rental agreement is between the customer and Kashi Rentals.</p>
               </div>
             </div>
 

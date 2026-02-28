@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: "About Us | Varanasi's Trusted Scooty & Bike Rental Service",
-  description: "Learn about Varanasi Bike Rental - your trusted partner for affordable scooty and bike rental in Banaras. Quality vehicles, transparent pricing, 24/7 support.",
+  description: "Learn about Kashi Rentals - your trusted partner for affordable scooty and bike rental in Banaras. Quality vehicles, transparent pricing, 24/7 support.",
   alternates: {
     canonical: 'https://rentals.awakenais.com/about',
   },
@@ -14,7 +14,7 @@ export default function AboutPage() {
     <>
       <section className="bg-gradient-to-br from-primary-50 to-white section-padding">
         <div className="container-custom">
-          <h1 className="heading-xl mb-6 text-center">About Varanasi Bike Rental</h1>
+          <h1 className="heading-xl mb-6 text-center">About Kashi Rentals</h1>
           <p className="text-xl text-dark-700 max-w-3xl mx-auto text-center">
             Your trusted partner for exploring the spiritual city of Varanasi on two wheels
           </p>
@@ -26,7 +26,7 @@ export default function AboutPage() {
           <h2 className="heading-md mb-6">Our Story</h2>
           <div className="space-y-4 text-lg text-dark-700">
             <p>
-              Varanasi Bike Rental was founded with a simple mission: to help travelers explore the ancient city
+              Kashi Rentals was founded with a simple mission: to help travelers explore the ancient city
               of Varanasi with freedom, flexibility, and affordability. We understand that the best way to experience
               Banaras is at your own pace, discovering hidden lanes, ghats, and temples that standard tourist packages miss.
             </p>

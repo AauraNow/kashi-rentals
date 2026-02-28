@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-primary-400">Varanasi Bike Rental</h3>
+            <h3 className="text-xl font-bold mb-4 text-primary-400">Kashi Rentals</h3>
             <p className="text-dark-300 mb-4">
               Your trusted partner for affordable scooty and bike rental in Varanasi.
               Explore the spiritual city with freedom and flexibility.
@@ -65,7 +65,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-dark-700 mt-8 pt-8 text-center text-dark-400">
-          <p>&copy; {new Date().getFullYear()} Varanasi Bike Rental. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Kashi Rentals. All rights reserved.</p>
           <p className="mt-2 text-sm">
             Scooty Rental Varanasi | Bike Rental Banaras | Scooty on Rent in Kashi | Bike on Rent Varanasi | Two Wheeler Rental | Self Drive Scooty Lanka | Activa on Rent | Honda Dio Rental | Bike Rental BHU | Scooty Rental Assi Ghat | Bike Rental Cantt
           </p>
