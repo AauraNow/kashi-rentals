@@ -40,11 +40,11 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4 text-primary-400">Popular Areas</h3>
             <ul className="space-y-2">
               <li><Link href="/locations/sigra" className="text-dark-300 hover:text-primary-400 transition-colors">Scooty Rental in Sigra</Link></li>
-              <li><Link href="/locations/assi-ghat" className="text-dark-300 hover:text-primary-400 transition-colors">Rental near Assi Ghat</Link></li>
-              <li><Link href="/locations/bhu" className="text-dark-300 hover:text-primary-400 transition-colors">Rental near BHU</Link></li>
-              <li><Link href="/locations/lanka" className="text-dark-300 hover:text-primary-400 transition-colors">Rental in Lanka</Link></li>
-              <li><Link href="/locations/varanasi-cantt" className="text-dark-300 hover:text-primary-400 transition-colors">Rental at Cantt Station</Link></li>
-              <li><Link href="/locations/sarnath" className="text-dark-300 hover:text-primary-400 transition-colors">Rental in Sarnath</Link></li>
+              <li><Link href="/locations/assi-ghat" className="text-dark-300 hover:text-primary-400 transition-colors">Scooty & Bike Rental near Assi Ghat</Link></li>
+              <li><Link href="/locations/bhu" className="text-dark-300 hover:text-primary-400 transition-colors">Bike & Scooty Rental near BHU</Link></li>
+              <li><Link href="/locations/lanka" className="text-dark-300 hover:text-primary-400 transition-colors">Scooty on Rent in Lanka</Link></li>
+              <li><Link href="/locations/varanasi-cantt" className="text-dark-300 hover:text-primary-400 transition-colors">Bike Rental at Cantt Station</Link></li>
+              <li><Link href="/locations/sarnath" className="text-dark-300 hover:text-primary-400 transition-colors">Two Wheeler Rental in Sarnath</Link></li>
             </ul>
           </div>
 
@@ -67,7 +67,7 @@ export default function Footer() {
         <div className="border-t border-dark-700 mt-8 pt-8 text-center text-dark-400">
           <p>&copy; {new Date().getFullYear()} Varanasi Bike Rental. All rights reserved.</p>
           <p className="mt-2 text-sm">
-            Keywords: Scooty Rental Varanasi | Bike Rental Banaras | Two Wheeler Rental Kashi | Self Drive Scooty Lanka | Bike Rental BHU
+            Scooty Rental Varanasi | Bike Rental Banaras | Scooty on Rent in Kashi | Bike on Rent Varanasi | Two Wheeler Rental | Self Drive Scooty Lanka | Activa on Rent | Honda Dio Rental | Bike Rental BHU | Scooty Rental Assi Ghat | Bike Rental Cantt
           </p>
         </div>
       </div>

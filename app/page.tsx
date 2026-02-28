@@ -11,6 +11,7 @@ const LocationCard = dynamic(() => import('@/components/LocationCard'), {
 
 const FAQItem = dynamic(() => import('@/components/FAQItem'));
 const StructuredData = dynamic(() => import('@/components/StructuredData'));
+const ReviewCarousel = dynamic(() => import('@/components/ReviewCarousel'));
 
 export const metadata: Metadata = {
   title: "Scooty & Bike Rental in Varanasi | Affordable Self Drive Starting ₹299/day",
@@ -290,6 +291,21 @@ export default function HomePage() {
             <Link href="/pricing" className="btn-primary inline-block">
               View All Vehicles & Pricing
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Customer Reviews Section */}
+      <section className="section-padding bg-gradient-to-br from-primary-50 to-white">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <h2 className="heading-lg mb-4">What Our Customers Say</h2>
+          </div>
+          <ReviewCarousel />
+          <div className="text-center mt-8">
+            <p className="text-dark-600 text-lg">
+              Join hundreds of satisfied customers exploring Varanasi on our scooties and bikes!
+            </p>
           </div>
         </div>
       </section>
