@@ -10,9 +10,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <nav className="container-custom px-4 py-2 md:py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
+        <div className="relative flex items-center justify-between">
+          {/* Logo + Brand name (desktop: left-aligned together) */}
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src="/logo.png"
               alt="Kashi Rentals - Scooty & Bike Rental in Varanasi"
@@ -21,6 +21,22 @@ export default function Header() {
               className="h-10 w-10 md:h-16 md:w-16 object-contain"
               priority
             />
+            {/* Brand name – visible on desktop only next to logo */}
+            <span
+              className="hidden md:block text-[2.2rem] font-extrabold tracking-wide text-primary-600"
+              style={{ fontFamily: "var(--font-nunito, 'Nunito', sans-serif)" }}
+            >
+              Kashi Rentals
+            </span>
+
+            {/* Brand name – centered on mobile between logo and hamburger */}
+            <span
+              className="md:hidden absolute left-1/2 -translate-x-1/2 text-[1.1rem] font-extrabold tracking-wide text-primary-600 whitespace-nowrap"
+              style={{ fontFamily: "var(--font-nunito, 'Nunito', sans-serif)" }}
+            >
+              Kashi Rentals
+            </span>
+
           </Link>
 
           {/* Desktop Navigation */}

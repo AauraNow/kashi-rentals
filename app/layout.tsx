@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Poppins, Nunito } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -13,6 +13,15 @@ const poppins = Poppins({
   subsets: ["latin", "latin-ext"],
   display: 'swap',
   variable: '--font-poppins',
+  preload: true,
+});
+
+// Nunito – soft, rounded font for the brand name
+const nunito = Nunito({
+  weight: ['700', '800'],
+  subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-nunito',
   preload: true,
 });
 
@@ -95,7 +104,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       </head>
-      <body className={poppins.className}>
+      <body className={`${poppins.variable} ${nunito.variable} ${poppins.className}`}>
         <SplashScreen />
         {/* Google Analytics */}
         {gaId && (
