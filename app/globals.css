@@ -77,3 +77,194 @@
     animation: fadeIn 0.6s ease-in-out;
   }
 }
+
+/* ───────────────────────────────────────────
+   Blog article content styles
+─────────────────────────────────────────── */
+.blog-content {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: #334155;
+}
+
+/* Headings */
+.blog-content h2 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #fed7aa;
+  line-height: 1.3;
+}
+
+.blog-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blog-content h3::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 1.1em;
+  background-color: #f97316;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.blog-content h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Paragraphs */
+.blog-content p {
+  margin-bottom: 1.1rem;
+  color: #475569;
+}
+
+/* Lists */
+.blog-content ul,
+.blog-content ol {
+  margin: 1rem 0 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.blog-content ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.45rem;
+  color: #475569;
+}
+
+.blog-content ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #f97316;
+  font-size: 0.85rem;
+  top: 0.15em;
+}
+
+.blog-content ol li {
+  margin-bottom: 0.45rem;
+  color: #475569;
+  padding-left: 0.25rem;
+}
+
+/* Strong / bold labels */
+.blog-content strong {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Links */
+.blog-content a {
+  color: #ea580c;
+  text-decoration: none;
+  border-bottom: 1px solid #fed7aa;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.blog-content a:hover {
+  color: #c2410c;
+  border-bottom-color: #f97316;
+}
+
+/* Blockquote */
+.blog-content blockquote {
+  border-left: 4px solid #f97316;
+  background: #fff7ed;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #7c2d12;
+}
+
+.blog-content blockquote p {
+  margin: 0;
+  color: inherit;
+}
+
+/* Tables */
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: 0.93rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.blog-content th {
+  background-color: #f97316;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.7rem 1rem;
+  text-align: left;
+}
+
+.blog-content td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+.blog-content tr:last-child td {
+  border-bottom: none;
+}
+
+.blog-content tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+
+/* Code */
+.blog-content code {
+  background: #f1f5f9;
+  color: #c2410c;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+
+.blog-content pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+}
+
+.blog-content pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+/* Horizontal rule */
+.blog-content hr {
+  border: none;
+  border-top: 2px dashed #e2e8f0;
+  margin: 2.5rem 0;
+}
+
