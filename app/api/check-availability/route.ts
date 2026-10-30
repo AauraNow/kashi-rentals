@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Mock response - in production, call FastAPI backend
-    // Example: const response = await fetch('https://api.varanasibikerental.com/check-availability', {...})
+    // Example: const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/check-availability`, {...})
 
     const mockResponse = {
       available: true,

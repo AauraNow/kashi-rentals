@@ -14,10 +14,10 @@ export const siteConfig = {
   expansionCities: ["Ayodhya", "Prayagraj", "Rishikesh", "Jaipur"],
   
   contact: {
-    phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE || "+91 73487 45464",
-    phoneDisplay: "+91 73487 45464",
+    phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE || "+917348745464",
+    phoneDisplay: "+91 7348745464",
     whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "917348745464",
-    email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || "contact@varanasibikerental.com",
+    email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || "contact@awaikensai.com",
     address: "Near Varanasi Cantonment Railway Station, Mahmoorganj, Varanasi, UP 221002",
     coordinates: {
       latitude: 25.3176,
@@ -68,6 +68,6 @@ export function getWhatsAppBookingUrl(params?: {
  */
 export function getWhatsAppPartnerUrl(): string {
   const number = siteConfig.contact.whatsappNumber;
-  const text = `Hi! I want to list my vehicle / fleet on Rentals by Awaken AI in Varanasi. Please share partner onboarding details and terms.`;
+  const text = `Hi! I want to list my vehicle / fleet on Kashi Rentals (by Awaken AI) in Varanasi. Please share partner onboarding details and terms.`;
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 }

@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
+import { siteConfig } from '@/lib/config';
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://rentals.awakenais.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
 
   return {
     rules: {
