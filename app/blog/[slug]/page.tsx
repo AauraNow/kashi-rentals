@@ -5,11 +5,12 @@ import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 import Link from 'next/link';
+import { siteConfig, getWhatsAppBookingUrl } from '@/lib/config';
 
-// Configure marked for better rendering
+// Configure marked
 marked.setOptions({
-  gfm: true, // GitHub Flavored Markdown
-  breaks: true, // Convert \n to <br>
+  gfm: true,
+  breaks: true,
 });
 
 interface BlogPostProps {
@@ -46,11 +47,17 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
   const { data } = matter(fileContents);
 
   return {
-    title: data.title,
+    title: `${data.title} | Kashi Rentals Blog`,
     description: data.description,
     keywords: data.keywords,
     alternates: {
-      canonical: `https://rentals.awakenais.com/blog/${params.slug}`,
+      canonical: `${siteConfig.url}/blog/${params.slug}`,
+    },
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      url: `${siteConfig.url}/blog/${params.slug}`,
+      type: 'article',
     },
   };
 }
@@ -68,66 +75,110 @@ export default function BlogPost({ params }: BlogPostProps) {
 
   // Remove h1 from content (title is already shown in header)
   const contentWithoutH1 = content.replace(/^# .*$/gm, '');
-
-  // Convert markdown to HTML using marked library
   const htmlContent = marked.parse(contentWithoutH1) as string;
 
   return (
-    <>
-      <article>
-        {/* Header */}
-        <section className="bg-gradient-to-br from-primary-50 to-white section-padding">
-          <div className="container-custom max-w-4xl">
-            <nav className="text-sm mb-4 text-dark-600">
-              <Link href="/" className="hover:text-primary-600">Home</Link> /
-              <Link href="/blog" className="hover:text-primary-600 ml-1">Blog</Link> /
-              <span className="ml-1 text-dark-900">{data.title}</span>
-            </nav>
-            <span className="bg-primary-100 text-primary-700 px-4 py-2 rounded-full text-sm font-semibold">
-              {data.category}
-            </span>
-            <h1 className="heading-xl mt-4 mb-4">{data.title}</h1>
-            <p className="text-xl text-dark-700 mb-6">{data.description}</p>
-            <div className="flex items-center gap-6 text-dark-600">
-              <span>📅 {new Date(data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-              <span>⏱️ {data.readTime}</span>
+    <article>
+      {/* Header */}
+      <section className="relative overflow-hidden pt-10 pb-12 md:pt-14 md:pb-16 bg-gradient-to-b from-dark-50/70 via-white to-white border-b border-dark-100">
+        <div className="container-custom max-w-3xl px-4 sm:px-6">
+          <nav className="text-xs mb-4 text-dark-500 flex items-center gap-1.5 font-medium">
+            <Link href="/" className="hover:text-dark-900 transition-colors">Home</Link>
+            <span>/</span>
+            <Link href="/blog" className="hover:text-dark-900 transition-colors">Blog</Link>
+            <span>/</span>
+            <span className="text-dark-900 truncate max-w-xs">{data.title}</span>
+          </nav>
+
+          <span className="badge-ember text-xs mb-3">
+            {data.category}
+          </span>
+
+          <h1 className="heading-lg sm:text-4xl text-dark-950 font-bold tracking-tight mb-4 leading-tight">
+            {data.title}
+          </h1>
+
+          <p className="text-sm sm:text-base text-dark-600 leading-relaxed mb-6">
+            {data.description}
+          </p>
+
+          <div className="flex items-center gap-4 text-xs text-dark-500 pt-4 border-t border-dark-100">
+            <span>📅 {new Date(data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <span>•</span>
+            <span>⏱️ {data.readTime}</span>
+            <span>•</span>
+            <span className="text-dark-700 font-medium">By Varanasi Travel Desk</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Reading Canvas */}
+      <section className="py-12 md:py-16 bg-white">
+        <div className="container-custom max-w-3xl px-4 sm:px-6">
+          <div
+            className="blog-content"
+            dangerouslySetInnerHTML={{ __html: htmlContent }}
+          />
+
+          {/* In-Article Conversion Card */}
+          <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-dark-50 border border-dark-200/80">
+            <h3 className="text-lg font-bold text-dark-950 mb-2">
+              Ready to explore this route?
+            </h3>
+            <p className="text-xs sm:text-sm text-dark-600 mb-6 leading-relaxed">
+              Rent a verified Honda Activa or motorcycle in Varanasi starting at ₹299/day. Doorstep delivery and sanitized helmet included.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={getWhatsAppBookingUrl({ customText: `Hi! I was reading "${data.title}" and want to rent a vehicle in Varanasi.` })}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-xs sm:text-sm py-2.5 px-6 justify-center"
+              >
+                <span>Book Ride on WhatsApp</span>
+                <span>→</span>
+              </a>
+              <Link href="/pricing" className="btn-outline text-xs sm:text-sm py-2.5 px-5 justify-center">
+                Check Rental Rates
+              </Link>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Content */}
-        <section className="section-padding bg-white">
-          <div className="container-custom max-w-4xl">
-            <article
-              className="blog-content"
-              dangerouslySetInnerHTML={{ __html: htmlContent }}
-            />
-          </div>
-        </section>
+      {/* Related Quick Links */}
+      <section className="section-padding bg-dark-50/50 border-t border-dark-100">
+        <div className="container-custom max-w-4xl">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-dark-500 mb-6 text-center">
+            Explore Varanasi Rentals
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link href="/scooty-rental-in-varanasi" className="card-minimal p-5 block group">
+              <span className="text-xs font-bold text-primary-600">🛵 SCOOTY FLEET</span>
+              <h3 className="font-bold text-sm text-dark-950 group-hover:text-primary-600 transition-colors my-1">
+                Honda Activa & Jupiter
+              </h3>
+              <p className="text-xs text-dark-500">From ₹299/day with helmet</p>
+            </Link>
 
-        {/* Related CTAs */}
-        <section className="section-padding bg-dark-50">
-          <div className="container-custom max-w-4xl">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Link href="/contact" className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
-                <div className="text-4xl mb-3">🏍️</div>
-                <h3 className="font-bold text-lg mb-2">Book Your Ride</h3>
-                <p className="text-dark-600 text-sm">Start your Varanasi adventure</p>
-              </Link>
-              <Link href="/pricing" className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
-                <div className="text-4xl mb-3">💰</div>
-                <h3 className="font-bold text-lg mb-2">View Pricing</h3>
-                <p className="text-dark-600 text-sm">Transparent rates from ₹299/day</p>
-              </Link>
-              <Link href="/blog" className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center">
-                <div className="text-4xl mb-3">📚</div>
-                <h3 className="font-bold text-lg mb-2">More Guides</h3>
-                <p className="text-dark-600 text-sm">Explore all travel tips</p>
-              </Link>
-            </div>
+            <Link href="/bike-rental-in-varanasi" className="card-minimal p-5 block group">
+              <span className="text-xs font-bold text-primary-600">🏍️ MOTORCYCLE FLEET</span>
+              <h3 className="font-bold text-sm text-dark-950 group-hover:text-primary-600 transition-colors my-1">
+                Royal Enfield & Pulsar
+              </h3>
+              <p className="text-xs text-dark-500">From ₹499/day for highway tours</p>
+            </Link>
+
+            <Link href="/locations" className="card-minimal p-5 block group">
+              <span className="text-xs font-bold text-primary-600">📍 PICKUP HUBS</span>
+              <h3 className="font-bold text-sm text-dark-950 group-hover:text-primary-600 transition-colors my-1">
+                12+ Locations in Kashi
+              </h3>
+              <p className="text-xs text-dark-500">Cantt, Assi, BHU Lanka, Sigra</p>
+            </Link>
           </div>
-        </section>
-      </article>
-    </>
+        </div>
+      </section>
+    </article>
   );
 }
