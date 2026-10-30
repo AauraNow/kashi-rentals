@@ -2,89 +2,104 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import LocationCard from '@/components/LocationCard';
 import { locations } from '@/lib/locations';
-
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
+import { siteConfig, getWhatsAppBookingUrl } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: "Scooty & Bike Rental Locations in Varanasi | All Areas Covered",
-  description: "Find scooty and bike rental across all areas of Varanasi including Sigra, BHU, Assi Ghat, Lanka, Cantt, Mahmoorganj, Godowlia, Sarnath. Flexible pickup points.",
+  title: "Scooty & Bike Rental Pickup Hubs in Varanasi | All Areas Covered",
+  description: "Find verified scooty and bike rental pickup hubs across Varanasi: Cantt Railway Station, Assi Ghat, BHU Lanka, Sigra, Godowlia, Sarnath, and Mahmoorganj. Doorstep hotel delivery available.",
   keywords: [
     "scooty rental locations varanasi",
     "bike rental areas varanasi",
     "rental near me varanasi",
+    "scooty rental assi ghat",
+    "bike rental cantt station varanasi",
     "all location bike rental banaras"
   ],
   alternates: {
-    canonical: 'https://rentals.awakenais.com/locations',
+    canonical: `${siteConfig.url}/locations`,
   },
 };
 
 export default function LocationsPage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 to-white section-padding">
-        <div className="container-custom text-center">
-          <h1 className="heading-xl mb-6">Scooty & Bike Rental Locations Across Varanasi</h1>
-          <p className="text-xl text-dark-700 max-w-3xl mx-auto">
-            We serve all major areas in Varanasi, Banaras, Kashi. Choose your convenient pickup location
-            for scooty and bike rental starting ₹299/day.
+      {/* Hero */}
+      <section className="relative overflow-hidden pt-12 pb-14 md:pt-16 md:pb-20 bg-gradient-to-b from-dark-50/70 via-white to-white">
+        <div className="container-custom px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto text-center">
+          <div className="inline-flex items-center gap-1.5 badge-pill mb-4">
+            <span>📍</span>
+            <span>12+ Pickup Hubs</span>
+          </div>
+          <h1 className="heading-xl mb-4">
+            Pickup Hubs Across Varanasi
+          </h1>
+          <p className="text-base sm:text-lg text-dark-600 max-w-2xl mx-auto">
+            Convenient pickup and drop-off points near major transit terminals, river ghats, student campuses, and temple corridors.
           </p>
         </div>
       </section>
 
-      {/* All Locations */}
-      <section className="section-padding bg-white">
+      {/* Hubs Grid */}
+      <section className="section-padding bg-white border-t border-dark-100">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {locations.map((location, index) => (
               <LocationCard
                 key={index}
                 name={location.name}
                 slug={location.slug}
-                description={location.description.substring(0, 120) + '...'}
-                icon="📍"
+                description={location.description}
               />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Coverage Map Text */}
-      <section className="section-padding bg-dark-50">
-        <div className="container-custom">
-          <h2 className="heading-md text-center mb-8">Our Service Coverage</h2>
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-lg text-dark-700 mb-6">
-              We provide scooty and bike rental services across all major tourist and residential areas in Varanasi.
-              Whether you&apos;re staying near the railway station, university campus, or the ghats, we&apos;ve got you covered.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-dark-800">
-              <div>✓ Railway Stations</div>
-              <div>✓ Airport</div>
-              <div>✓ All Ghats</div>
-              <div>✓ BHU Campus</div>
-              <div>✓ Hotels & Hostels</div>
-              <div>✓ Markets</div>
-              <div>✓ Temples</div>
-              <div>✓ Tourist Areas</div>
+      {/* Coverage Highlights */}
+      <section className="section-padding bg-dark-50/60 border-t border-b border-dark-100">
+        <div className="container-custom max-w-4xl text-center">
+          <h2 className="heading-md mb-3">Doorstep Delivery Across Varanasi</h2>
+          <p className="text-dark-600 text-sm max-w-2xl mx-auto mb-8">
+            Staying at a hotel, guesthouse, or hostel? Our partner delivery network can bring your sanitized scooty or bike directly to your doorstep.
+          </p>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-dark-800">
+            <div className="bg-white p-3 rounded-xl border border-dark-200/80 shadow-subtle">
+              🚂 Cantt & Manduadih
+            </div>
+            <div className="bg-white p-3 rounded-xl border border-dark-200/80 shadow-subtle">
+              🌊 Assi & Dashashwamedh
+            </div>
+            <div className="bg-white p-3 rounded-xl border border-dark-200/80 shadow-subtle">
+              🎓 BHU & Lanka Hub
+            </div>
+            <div className="bg-white p-3 rounded-xl border border-dark-200/80 shadow-subtle">
+              ☸️ Sarnath Circuit
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-padding bg-primary-600 text-white">
-        <div className="container-custom text-center">
-          <h2 className="heading-lg mb-4">Can&apos;t Find Your Location?</h2>
-          <p className="text-xl mb-8">Contact us! We offer delivery across Varanasi.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">
-              Contact Us
-            </Link>
-            <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hi! I need a scooty or bike rental in Varanasi. Can you help me find the nearest pickup location and check availability?')}`} target="_blank" rel="noopener noreferrer" className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
-              WhatsApp Us
+      {/* Bottom Conversion CTA */}
+      <section className="section-padding bg-white text-center">
+        <div className="container-custom max-w-2xl">
+          <h2 className="heading-lg mb-3">Can&apos;t Find Your Location?</h2>
+          <p className="text-dark-600 text-sm mb-6">
+            Share your hotel location on WhatsApp and we will dispatch the nearest verified vehicle.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href={getWhatsAppBookingUrl({ customText: "Hi! I need a scooty/bike delivered to my location in Varanasi. Can you check delivery availability?" })}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-sm py-3 px-8 justify-center"
+            >
+              <span>Request Delivery on WhatsApp</span>
+              <span>→</span>
             </a>
+            <Link href="/contact" className="btn-outline text-sm py-3 px-6 justify-center">
+              View Contact Details
+            </Link>
           </div>
         </div>
       </section>

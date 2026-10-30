@@ -2,23 +2,22 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import FAQItem from '@/components/FAQItem';
 import StructuredData from '@/components/StructuredData';
-
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
-const phoneNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+91 98765 43210';
+import { siteConfig, getWhatsAppBookingUrl } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: "Scooty Rental in Varanasi | Honda Activa & TVS Jupiter from ₹299/day",
-  description: "Best scooty rental in Varanasi, Banaras, Kashi. Honda Activa, TVS Jupiter, Hero Pleasure available. Self-drive scooty near BHU, Assi, Cantt, Lanka from ₹299/day.",
+  description: "Best scooty rental in Varanasi, Banaras, Kashi from verified local fleets. Honda Activa 6G, TVS Jupiter, Hero Pleasure+ available. Self-drive rental near BHU, Assi, Cantt from ₹299/day.",
   keywords: [
     "scooty rental in varanasi",
     "activa rental varanasi",
     "rent scooty in banaras",
     "self drive scooty kashi",
     "two wheeler rental varanasi",
-    "scooty on rent near me varanasi"
+    "scooty on rent near me varanasi",
+    "honda activa rent varanasi"
   ],
   alternates: {
-    canonical: 'https://rentals.awakenais.com/scooty-rental-in-varanasi',
+    canonical: `${siteConfig.url}/scooty-rental-in-varanasi`,
   },
 };
 
@@ -29,7 +28,7 @@ export default function ScootyRentalPage() {
     "serviceType": "Scooty Rental",
     "provider": {
       "@type": "LocalBusiness",
-      "name": "Kashi Rentals"
+      "name": "Kashi Rentals • by Awaken AI"
     },
     "areaServed": {
       "@type": "City",
@@ -42,224 +41,278 @@ export default function ScootyRentalPage() {
     }
   };
 
+  const scooties = [
+    {
+      name: "Honda Activa 6G",
+      price: 299,
+      badge: "Most Popular",
+      specs: [
+        "110cc Silent Start Engine",
+        "45+ kmpl Proven Mileage",
+        "Telescopic Suspension for Cobblestones",
+        "Mobile Charging Port",
+        "Spacious Footboard & Boot",
+        "Free ISI Helmet Included"
+      ]
+    },
+    {
+      name: "TVS Jupiter 110",
+      price: 299,
+      badge: "Best Comfort",
+      specs: [
+        "110cc EcoThrust Engine",
+        "50+ kmpl High Fuel Efficiency",
+        "Largest Under-Seat Storage in Class",
+        "External Fuel Fill",
+        "Bright LED Headlamp for Ghats",
+        "Free ISI Helmet Included"
+      ]
+    },
+    {
+      name: "Hero Pleasure Plus",
+      price: 299,
+      badge: "Easy Handling",
+      specs: [
+        "110cc Lightweight Body",
+        "Effortless to Park in Narrow Gallis",
+        "Low Seat Height – Ideal for Solo Travel",
+        "45+ kmpl City Mileage",
+        "Smooth Automatic Twist-and-Go",
+        "Free ISI Helmet Included"
+      ]
+    }
+  ];
+
   return (
     <>
       <StructuredData data={serviceSchema} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary-50 to-white section-padding">
-        <div className="container-custom">
-          <h1 className="heading-xl mb-6">Scooty Rental in Varanasi - Starting ₹299/day</h1>
-          <p className="text-xl text-dark-700 mb-6 max-w-4xl">
-            Rent Honda Activa, TVS Jupiter, and Hero Pleasure scootys in Varanasi, Banaras, Kashi.
-            Perfect for exploring ghats, temples, and narrow lanes. Self-drive scooty rental near BHU,
-            Assi Ghat, Cantt Railway Station, Lanka, Sigra, and all major areas.
+      <section className="relative overflow-hidden pt-12 pb-14 md:pt-16 md:pb-20 bg-gradient-to-b from-dark-50/70 via-white to-white">
+        <div className="container-custom px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-1.5 badge-pill mb-4">
+            <span>🛵</span>
+            <span>Self-Drive Scooty Fleet</span>
+          </div>
+
+          <h1 className="heading-xl mb-4">
+            Scooty Rental in Varanasi <br className="hidden sm:inline" />
+            <span className="text-primary-600">Starting at Just ₹299/day</span>
+          </h1>
+
+          <p className="text-base sm:text-lg text-dark-600 max-w-2xl mx-auto mb-8">
+            Rent automatic Honda Activa and TVS Jupiter scooties from verified local fleets. Effortless navigation through Banaras lanes, ghats, and temple corridors.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/contact" className="btn-primary text-lg">Book Scooty Now</Link>
-            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="btn-outline text-lg">WhatsApp Booking</a>
-            <Link href="/pricing" className="btn-secondary text-lg">View Pricing</Link>
+
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={getWhatsAppBookingUrl({ vehicle: "Honda Activa 6G", duration: 1 })}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-sm py-3 px-6"
+            >
+              <span>Instant WhatsApp Booking</span>
+              <span>→</span>
+            </a>
+            <Link href="/pricing" className="btn-outline text-sm py-3 px-5">
+              View Rental Rates
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Available Scootys */}
+      {/* Scooty Fleet Cards */}
+      <section className="section-padding bg-white border-t border-dark-100">
+        <div className="container-custom">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <h2 className="heading-lg mb-2">Our Scooty Fleet</h2>
+            <p className="text-dark-600 text-sm">
+              Serviced, washed, and tanked before every booking
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {scooties.map((scooty, index) => {
+              const bookUrl = getWhatsAppBookingUrl({
+                vehicle: scooty.name,
+                duration: 1
+              });
+
+              return (
+                <div
+                  key={index}
+                  className="bg-white border border-dark-200/80 rounded-2xl p-6 sm:p-7 shadow-subtle hover:border-dark-300 hover:shadow-card transition-all duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="badge-ember text-[11px]">
+                        {scooty.badge}
+                      </span>
+                      <span className="badge-verified text-[11px]">
+                        ✓ In Stock
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-dark-950 mb-1">{scooty.name}</h3>
+                    
+                    <div className="flex items-baseline gap-1 my-3">
+                      <span className="text-3xl font-extrabold text-primary-600">₹{scooty.price}</span>
+                      <span className="text-xs text-dark-500">/ day (24 hrs)</span>
+                    </div>
+
+                    <div className="space-y-2 py-4 border-t border-b border-dark-100 my-4">
+                      {scooty.specs.map((spec, idx) => (
+                        <div key={idx} className="flex items-center gap-2 text-xs text-dark-700">
+                          <svg className="w-3.5 h-3.5 text-primary-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span>{spec}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <a
+                    href={bookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary w-full text-center text-xs py-2.5 rounded-xl justify-center font-semibold"
+                  >
+                    <span>Book {scooty.name}</span>
+                    <span>→</span>
+                  </a>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Rent Scooty in Varanasi */}
+      <section className="section-padding bg-dark-50/60 border-t border-b border-dark-100">
+        <div className="container-custom">
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <h2 className="heading-lg mb-2">Why Scooty is the Best Choice in Kashi</h2>
+            <p className="text-dark-600 text-sm">Freedom to access lanes where cars and large buses can never enter</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="card-minimal">
+              <div className="w-9 h-9 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center mb-3">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-base text-dark-950 mb-1.5">Conquer Ancient Lanes</h3>
+              <p className="text-xs text-dark-600 leading-relaxed">
+                Varanasi&apos;s most beautiful temples, lassi shops, and river ghats are tucked inside narrow streets. An automatic scooty slips right through.
+              </p>
+            </div>
+
+            <div className="card-minimal">
+              <div className="w-9 h-9 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center mb-3">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-base text-dark-950 mb-1.5">Cheaper Than Auto Taxis</h3>
+              <p className="text-xs text-dark-600 leading-relaxed">
+                A single auto ride between Cantt and Assi can cost ₹250. At ₹299/day, you get unlimited 24-hour freedom across the entire city.
+              </p>
+            </div>
+
+            <div className="card-minimal">
+              <div className="w-9 h-9 rounded-xl bg-primary-50 text-primary-600 flex items-center justify-center mb-3">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                </svg>
+              </div>
+              <h3 className="font-bold text-base text-dark-950 mb-1.5">Hassle-Free Parking</h3>
+              <p className="text-xs text-dark-600 leading-relaxed">
+                Designated two-wheeler parking stands exist outside all major ghats, Vishwanath Temple corridors, and BHU campus gates.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Scooty Routes */}
       <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="heading-md mb-12 text-center">Our Scooty Fleet</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border-2 border-primary-200 rounded-lg p-8 shadow-lg">
-              <h3 className="text-2xl font-bold mb-3">Honda Activa 6G</h3>
-              <p className="text-4xl font-bold text-primary-600 mb-4">₹299/day</p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>110cc Engine - Smooth Power</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>45+ kmpl Fuel Efficiency</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Comfortable Seat for Long Rides</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Digital Speedometer</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>USB Charging Port</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Ample Storage Space</li>
-              </ul>
-              <Link href="/contact" className="btn-primary w-full block text-center">Book Activa</Link>
+        <div className="container-custom max-w-5xl">
+          <div className="text-center mb-10">
+            <h2 className="heading-lg mb-2">Recommended Itinerary Routes</h2>
+            <p className="text-dark-600 text-sm">Tested and loved by thousands of travelers</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-5 rounded-2xl bg-dark-50 border border-dark-200/80">
+              <span className="text-xs font-bold text-primary-600 uppercase">Route 01 • Ghat Circuit</span>
+              <h3 className="font-bold text-sm text-dark-950 my-1">Assi Ghat → Dashashwamedh → Manikarnika</h3>
+              <p className="text-xs text-dark-600">Distance: ~8 km • Catch Subah-e-Banaras at 5 AM and evening Ganga Aarti.</p>
             </div>
 
-            <div className="bg-white border-2 border-primary-200 rounded-lg p-8 shadow-lg">
-              <h3 className="text-2xl font-bold mb-3">TVS Jupiter</h3>
-              <p className="text-4xl font-bold text-primary-600 mb-4">₹299/day</p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>110cc Eco-Friendly Engine</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Excellent Mileage 50+ kmpl</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Largest Under-seat Storage</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>LED Headlamp</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Mobile Charging Port</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Comfortable for Two</li>
-              </ul>
-              <Link href="/contact" className="btn-primary w-full block text-center">Book Jupiter</Link>
+            <div className="p-5 rounded-2xl bg-dark-50 border border-dark-200/80">
+              <span className="text-xs font-bold text-primary-600 uppercase">Route 02 • Temple Trail</span>
+              <h3 className="font-bold text-sm text-dark-950 my-1">Kashi Vishwanath → Durga Temple → Sankat Mochan</h3>
+              <p className="text-xs text-dark-600">Distance: ~10 km • Easy two-wheeler parking at all temple stands.</p>
             </div>
 
-            <div className="bg-white border-2 border-primary-200 rounded-lg p-8 shadow-lg">
-              <h3 className="text-2xl font-bold mb-3">Hero Pleasure Plus</h3>
-              <p className="text-4xl font-bold text-primary-600 mb-4">₹299/day</p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>110cc Reliable Engine</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Lightweight & Easy Handling</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Perfect for City Navigation</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Fuel Efficient 45+ kmpl</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Stylish Design</li>
-                <li className="flex items-start"><span className="text-primary-500 mr-2">✓</span>Easy to Park in Narrow Lanes</li>
-              </ul>
-              <Link href="/contact" className="btn-primary w-full block text-center">Book Pleasure</Link>
+            <div className="p-5 rounded-2xl bg-dark-50 border border-dark-200/80">
+              <span className="text-xs font-bold text-primary-600 uppercase">Route 03 • Buddhist Circuit</span>
+              <h3 className="font-bold text-sm text-dark-950 my-1">Varanasi Center → Sarnath Stupa & Museum</h3>
+              <p className="text-xs text-dark-600">Distance: ~22 km roundtrip • Smooth 4-lane highway ride on an Activa.</p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-dark-50 border border-dark-200/80">
+              <span className="text-xs font-bold text-primary-600 uppercase">Route 04 • Green Campus Tour</span>
+              <h3 className="font-bold text-sm text-dark-950 my-1">BHU Gate → New VT → Bharat Kala Bhavan</h3>
+              <p className="text-xs text-dark-600">Distance: ~6 km • Serene tree-lined campus boulevards.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Rent Scooty */}
-      <section className="section-padding bg-dark-50">
-        <div className="container-custom">
-          <h2 className="heading-md mb-12 text-center">Why Rent a Scooty in Varanasi?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl mb-3">🛣️</div>
-              <h3 className="text-xl font-bold mb-2">Navigate Narrow Lanes</h3>
-              <p className="text-dark-700">Varanasi&apos;s old city has narrow lanes where scootys are the best mode of transport. Cars and autos can&apos;t reach many areas.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl mb-3">💰</div>
-              <h3 className="text-xl font-bold mb-2">Most Economical</h3>
-              <p className="text-dark-700">At ₹299/day, scooty rental is cheaper than daily auto fares. Save money and have unlimited freedom to explore.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl mb-3">⛽</div>
-              <h3 className="text-xl font-bold mb-2">Fuel Efficient</h3>
-              <p className="text-dark-700">Our scootys give 45-50 kmpl mileage. Explore entire Varanasi in minimal fuel cost.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl mb-3">🅿️</div>
-              <h3 className="text-xl font-bold mb-2">Easy Parking</h3>
-              <p className="text-dark-700">Scootys can be parked anywhere near ghats, temples, and markets. No parking hassles.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl mb-3">👥</div>
-              <h3 className="text-xl font-bold mb-2">Perfect for Couples</h3>
-              <p className="text-dark-700">Comfortable seating for two. Explore Varanasi together at your own pace.</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-4xl mb-3">🌤️</div>
-              <h3 className="text-xl font-bold mb-2">All-Weather Riding</h3>
-              <p className="text-dark-700">Scootys are perfect for Varanasi&apos;s weather. Easy to handle in traffic and comfortable in heat.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Routes */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="heading-md mb-12 text-center">Popular Scooty Routes in Varanasi</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-primary-50 p-6 rounded-lg border-2 border-primary-200">
-              <h3 className="text-xl font-bold mb-4">🕉️ Ghat Circuit</h3>
-              <p className="text-dark-700 mb-3">Assi Ghat → Dashashwamedh Ghat → Manikarnika Ghat → Panchganga Ghat</p>
-              <p className="text-dark-600">Distance: ~8 km | Time: 30 mins</p>
-            </div>
-            <div className="bg-primary-50 p-6 rounded-lg border-2 border-primary-200">
-              <h3 className="text-xl font-bold mb-4">🛕 Temple Tour</h3>
-              <p className="text-dark-700 mb-3">Kashi Vishwanath → Durga Temple → Sankat Mochan → Tulsi Manas</p>
-              <p className="text-dark-600">Distance: ~10 km | Time: 45 mins</p>
-            </div>
-            <div className="bg-primary-50 p-6 rounded-lg border-2 border-primary-200">
-              <h3 className="text-xl font-bold mb-4">☸️ Buddhist Circuit</h3>
-              <p className="text-dark-700 mb-3">Varanasi → Sarnath (Dhamek Stupa, Museums) → Return</p>
-              <p className="text-dark-600">Distance: ~22 km | Time: 1.5 hours</p>
-            </div>
-            <div className="bg-primary-50 p-6 rounded-lg border-2 border-primary-200">
-              <h3 className="text-xl font-bold mb-4">🎓 BHU Campus Tour</h3>
-              <p className="text-dark-700 mb-3">BHU Main Gate → Vishwanath Temple → Museum → Gardens</p>
-              <p className="text-dark-600">Distance: ~6 km | Time: 25 mins</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Rental Locations */}
-      <section className="section-padding bg-dark-50">
-        <div className="container-custom">
-          <h2 className="heading-md mb-12 text-center">Scooty Rental Available in All Areas</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-center">
-            <Link href="/locations/sigra" className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="font-semibold text-primary-600">Sigra</p>
-            </Link>
-            <Link href="/locations/assi-ghat" className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="font-semibold text-primary-600">Assi Ghat</p>
-            </Link>
-            <Link href="/locations/bhu" className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="font-semibold text-primary-600">BHU</p>
-            </Link>
-            <Link href="/locations/lanka" className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="font-semibold text-primary-600">Lanka</p>
-            </Link>
-            <Link href="/locations/varanasi-cantt" className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="font-semibold text-primary-600">Cantt Station</p>
-            </Link>
-            <Link href="/locations/mahmoorganj" className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="font-semibold text-primary-600">Mahmoorganj</p>
-            </Link>
-            <Link href="/locations/godowlia" className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="font-semibold text-primary-600">Godowlia</p>
-            </Link>
-            <Link href="/locations/sarnath" className="bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow">
-              <p className="font-semibold text-primary-600">Sarnath</p>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="heading-md mb-12 text-center">Scooty Rental FAQs</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      {/* FAQs */}
+      <section className="section-padding bg-dark-50/60 border-t border-dark-100">
+        <div className="container-custom max-w-4xl">
+          <h2 className="heading-lg text-center mb-10">Scooty Rental FAQs</h2>
+          <div className="space-y-3.5">
             <FAQItem
               question="Which scooty is best for Varanasi roads?"
-              answer="Honda Activa is the most popular choice for Varanasi. It handles both smooth roads and rough patches well. TVS Jupiter offers best mileage for budget travelers."
+              answer="Honda Activa 6G is the crowd favorite with great suspension for cobblestone roads. TVS Jupiter offers slightly more legroom and high fuel efficiency."
             />
             <FAQItem
-              question="Can I rent scooty for 2-3 hours only?"
-              answer="Our minimum rental period is 24 hours (₹299). However, for BHU students, we offer flexible monthly packages."
+              question="Can I rent a scooty for 2-3 days or weekly?"
+              answer="Yes! We provide 1-day, 3-day, 7-day, and monthly packages. Extended bookings receive automated multi-day discounts."
             />
             <FAQItem
-              question="Do you provide two helmets with scooty?"
-              answer="Yes, we provide two ISI-marked helmets with every scooty rental at no extra cost."
+              question="Is an original Driving License required?"
+              answer="Yes, a valid original two-wheeler driving license is required for verification. We take a quick digital photo and hand back your original on the spot."
             />
             <FAQItem
-              question="Can I ride to Sarnath on rented scooty?"
-              answer="Absolutely! Sarnath is just 10-12 km from Varanasi. Our scootys are perfect for this trip. Plan for 1-1.5 hours including visit time."
-            />
-            <FAQItem
-              question="What if scooty breaks down during rental?"
-              answer="We provide 24/7 roadside assistance. Call our support number and we'll arrange repair or replacement within 1-2 hours."
-            />
-            <FAQItem
-              question="Is scooty easier than bike for first-time riders?"
-              answer="Yes! Scootys have automatic transmission (no gears), making them easier for beginners and comfortable for city riding."
+              question="What if the scooty gets a flat tire or battery issue?"
+              answer="We operate a 24/7 on-call roadside assistance network across Varanasi. We will reach your location with a mechanic or replacement scooty within 2 hours."
             />
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-padding bg-primary-600 text-white">
-        <div className="container-custom text-center">
-          <h2 className="heading-lg mb-4">Book Your Scooty in Varanasi Today!</h2>
-          <p className="text-xl mb-8">Start exploring the spiritual city with freedom and comfort</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">
-              Book Scooty Now
-            </Link>
-            <a href={`tel:${phoneNumber}`} className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
-              Call: {phoneNumber}
-            </a>
-          </div>
+      {/* Bottom Conversion CTA */}
+      <section className="section-padding bg-white border-t border-dark-100 text-center">
+        <div className="container-custom max-w-2xl">
+          <h2 className="heading-lg mb-3">Book Your Scooty in 2 Minutes</h2>
+          <p className="text-dark-600 text-sm mb-6">
+            Instant confirmation on WhatsApp with zero advance fee. Pick up at Cantt, Assi, BHU, or your hotel.
+          </p>
+          <a
+            href={getWhatsAppBookingUrl({ vehicle: "Honda Activa 6G", duration: 1 })}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary text-sm py-3 px-8 justify-center"
+          >
+            <span>Book Scooty on WhatsApp Now</span>
+            <span>→</span>
+          </a>
         </div>
       </section>
     </>

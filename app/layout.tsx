@@ -1,55 +1,48 @@
 import type { Metadata } from "next";
-import { Poppins, Nunito } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import SplashScreen from "@/components/SplashScreen";
+import { siteConfig } from "@/lib/config";
 
-// Poppins with optimized font weights for better performance
-const poppins = Poppins({
-  weight: ['400', '600', '700'],
+// Plus Jakarta Sans – modern, geometric, crisp sans-serif font
+const fontSans = Plus_Jakarta_Sans({
+  weight: ['400', '500', '600', '700', '800'],
   subsets: ["latin", "latin-ext"],
   display: 'swap',
-  variable: '--font-poppins',
-  preload: true,
-});
-
-// Nunito – soft, rounded font for the brand name
-const nunito = Nunito({
-  weight: ['700', '800'],
-  subsets: ["latin"],
-  display: 'swap',
-  variable: '--font-nunito',
+  variable: '--font-sans',
   preload: true,
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rentals.awakenais.com'),
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Scooty & Bike Rental in Varanasi | Affordable Self Drive Starting ₹299/day",
+    default: "Kashi Rentals • by Awaken AI | Scooty & Bike Rental in Varanasi",
     template: "%s | Kashi Rentals"
   },
-  description: "Affordable scooty and bike rental in Varanasi, Banaras, Kashi. Self-drive two wheeler rental near BHU, Assi Ghat, Cantt, Sigra, Lanka. Starting ₹299/day. Book now!",
+  description: "Affordable scooty and bike rental in Varanasi from verified local fleets. Self-drive two-wheeler rental starting ₹299/day near Cantt Station, BHU, Assi Ghat, Sigra, and Lanka. By Awaken AI.",
   keywords: [
     "scooty rental in varanasi",
     "bike rental in varanasi",
     "rent scooty in banaras",
     "rent bike in kashi",
-    "scooty rental in sigra",
-    "scooty rental in mahmoorganj",
-    "bike rental near BHU",
+    "kashi rentals",
+    "two wheeler rental varanasi",
     "scooty rental near assi ghat",
+    "bike rental near BHU",
     "bike rental near varanasi cantt railway station",
     "two wheeler rental in sarnath",
     "self drive scooty in lanka varanasi",
     "affordable bike rental varanasi",
     "activa rental varanasi",
-    "honda dio rental banaras"
+    "honda dio rental banaras",
+    "awaken ai rentals"
   ],
-  authors: [{ name: "Kashi Rentals" }],
-  creator: "Kashi Rentals",
+  authors: [{ name: "Kashi Rentals by Awaken AI" }],
+  creator: "Awaken AI Mobility Network",
   publisher: "Kashi Rentals",
   formatDetection: {
     email: false,
@@ -59,15 +52,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://rentals.awakenais.com',
-    title: 'Scooty & Bike Rental in Varanasi | Starting ₹299/day',
-    description: 'Affordable scooty and bike rental in Varanasi. Self-drive two wheeler rental near BHU, Assi Ghat, Cantt. Book now!',
-    siteName: 'Kashi Rentals',
+    url: siteConfig.url,
+    title: 'Kashi Rentals • by Awaken AI | Scooty & Bike Rental in Varanasi',
+    description: 'Affordable two-wheeler rentals from verified local fleets starting ₹299/day. Doorstep pickup, sanitized helmet, and 24/7 roadside assistance.',
+    siteName: 'Kashi Rentals • by Awaken AI',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Scooty & Bike Rental in Varanasi',
-    description: 'Affordable two wheeler rental in Varanasi starting ₹299/day',
+    title: 'Kashi Rentals • by Awaken AI | Scooty & Bike Rental in Varanasi',
+    description: 'Affordable scooties & bikes in Varanasi starting ₹299/day from verified local fleets.',
   },
   robots: {
     index: true,
@@ -98,13 +91,13 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={fontSans.variable}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
       </head>
-      <body className={`${poppins.variable} ${nunito.variable} ${poppins.className}`}>
+      <body className={`${fontSans.variable} font-sans min-h-screen flex flex-col bg-white text-dark-950 selection:bg-primary-100 selection:text-primary-950`}>
         <SplashScreen />
         {/* Google Analytics */}
         {gaId && (
@@ -127,7 +120,7 @@ export default function RootLayout({
         )}
 
         <Header />
-        <main className="min-h-screen">
+        <main className="flex-1">
           {children}
         </main>
         <Footer />

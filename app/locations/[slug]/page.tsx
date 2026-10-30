@@ -4,9 +4,7 @@ import Link from 'next/link';
 import { getLocationBySlug, getAllLocationSlugs } from '@/lib/locations';
 import FAQItem from '@/components/FAQItem';
 import StructuredData from '@/components/StructuredData';
-
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
-const phoneNumber = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+91 98765 43210';
+import { siteConfig, getWhatsAppBookingUrl } from '@/lib/config';
 
 export async function generateStaticParams() {
   const slugs = getAllLocationSlugs();
@@ -25,16 +23,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   return {
-    title: location.title,
+    title: `${location.title} | Kashi Rentals`,
     description: location.metaDescription,
     keywords: location.keywords,
     alternates: {
-      canonical: `https://rentals.awakenais.com/locations/${location.slug}`,
+      canonical: `${siteConfig.url}/locations/${location.slug}`,
     },
     openGraph: {
       title: location.title,
       description: location.metaDescription,
-      url: `https://rentals.awakenais.com/locations/${location.slug}`,
+      url: `${siteConfig.url}/locations/${location.slug}`,
       type: 'website',
     },
   };
@@ -68,22 +66,28 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://rentals.awakenais.com"
+        "item": siteConfig.url
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Locations",
-        "item": "https://rentals.awakenais.com/locations"
+        "item": `${siteConfig.url}/locations`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": location.name,
-        "item": `https://rentals.awakenais.com/locations/${location.slug}`
+        "item": `${siteConfig.url}/locations/${location.slug}`
       }
     ]
   };
+
+  const bookAtLocationUrl = getWhatsAppBookingUrl({
+    location: location.name,
+    duration: 1,
+    customText: `Hi! I need a scooty or bike rental near ${location.name}, Varanasi. Please confirm availability and rates.`
+  });
 
   return (
     <>
@@ -91,39 +95,63 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
       <StructuredData data={breadcrumbSchema} />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 to-white section-padding">
-        <div className="container-custom">
-          <nav className="text-sm mb-4 text-dark-600">
-            <Link href="/" className="hover:text-primary-600">Home</Link> /
-            <Link href="/locations" className="hover:text-primary-600 ml-1">Locations</Link> /
-            <span className="ml-1 text-dark-900">{location.name}</span>
+      <section className="relative overflow-hidden pt-10 pb-14 md:pt-14 md:pb-20 bg-gradient-to-b from-dark-50/70 via-white to-white">
+        <div className="container-custom px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          
+          {/* Breadcrumb */}
+          <nav className="text-xs mb-4 text-dark-500 flex items-center gap-1.5 font-medium">
+            <Link href="/" className="hover:text-dark-900 transition-colors">Home</Link>
+            <span>/</span>
+            <Link href="/locations" className="hover:text-dark-900 transition-colors">Locations</Link>
+            <span>/</span>
+            <span className="text-dark-900 font-semibold">{location.name}</span>
           </nav>
-          <h1 className="heading-xl mb-4">{location.title}</h1>
-          <p className="text-2xl text-primary-600 font-semibold mb-6">{location.subtitle}</p>
-          <p className="text-lg text-dark-700 max-w-4xl">{location.description}</p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/contact" className="btn-primary">
-              Book Now in {location.name}
-            </Link>
-            <a href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi! I need a scooty or bike rental near ${location.name}, Varanasi. Can you confirm availability and pricing?`)}`} target="_blank" rel="noopener noreferrer" className="btn-outline">
-              WhatsApp Booking
+
+          <div className="inline-flex items-center gap-1.5 badge-pill mb-4">
+            <span>📍</span>
+            <span>Varanasi Pickup Hub</span>
+          </div>
+
+          <h1 className="heading-xl mb-3 text-dark-950 font-extrabold tracking-tight">
+            {location.title}
+          </h1>
+
+          <p className="text-lg font-semibold text-primary-600 mb-4">
+            {location.subtitle}
+          </p>
+
+          <p className="text-sm sm:text-base text-dark-600 leading-relaxed mb-8 max-w-3xl">
+            {location.description}
+          </p>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={bookAtLocationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-sm py-3 px-6"
+            >
+              <span>Instant Book at {location.name}</span>
+              <span>→</span>
             </a>
-            <Link href="/pricing" className="btn-secondary">
-              View Pricing
+            <Link href="/pricing" className="btn-outline text-sm py-3 px-5">
+              View Rental Rates
             </Link>
           </div>
         </div>
       </section>
 
       {/* Why Rent Here */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="heading-md mb-8">Why Rent a Scooty in {location.name}?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="section-padding bg-white border-t border-dark-100">
+        <div className="container-custom max-w-5xl">
+          <h2 className="heading-md mb-8">Why Rent a Two-Wheeler in {location.name}?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {location.whyRentHere.map((reason, index) => (
-              <div key={index} className="flex items-start bg-dark-50 p-4 rounded-lg">
-                <span className="text-primary-500 text-2xl mr-3">✓</span>
-                <p className="text-dark-800">{reason}</p>
+              <div key={index} className="p-5 rounded-2xl bg-white border border-dark-200/80 shadow-subtle flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                  ✓
+                </span>
+                <p className="text-xs sm:text-sm text-dark-700 leading-relaxed">{reason}</p>
               </div>
             ))}
           </div>
@@ -131,15 +159,20 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
       </section>
 
       {/* Popular Routes */}
-      <section className="section-padding bg-dark-50">
-        <div className="container-custom">
+      <section className="section-padding bg-dark-50/60 border-t border-b border-dark-100">
+        <div className="container-custom max-w-5xl">
           <h2 className="heading-md mb-8">Popular Routes from {location.name}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {location.popularRoutes.map((route, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold text-dark-900 mb-2">📍 {route.destination}</h3>
-                <p className="text-dark-600">Distance: <span className="font-semibold">{route.distance}</span></p>
-                <p className="text-dark-600">Time: <span className="font-semibold text-primary-600">{route.time}</span></p>
+              <div key={index} className="bg-white p-5 rounded-2xl border border-dark-200/80 shadow-subtle flex flex-col justify-between">
+                <div>
+                  <span className="text-[11px] font-bold text-primary-600 uppercase block mb-1">Route</span>
+                  <h3 className="font-bold text-sm text-dark-950 mb-2">{route.destination}</h3>
+                </div>
+                <div className="pt-3 border-t border-dark-100 flex items-center justify-between text-xs text-dark-600">
+                  <span>Distance: <strong>{route.distance}</strong></span>
+                  <span className="text-primary-600 font-semibold">{route.time}</span>
+                </div>
               </div>
             ))}
           </div>
@@ -148,63 +181,67 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
 
       {/* Nearby Landmarks */}
       <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="heading-md mb-8">Nearby Landmarks to Explore from {location.name}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="container-custom max-w-5xl">
+          <h2 className="heading-md mb-8">Key Landmarks Near {location.name}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {location.landmarks.map((landmark, index) => (
-              <div key={index} className="bg-primary-50 p-4 rounded-lg border border-primary-200">
-                <h3 className="font-bold text-dark-900">{landmark.name}</h3>
-                <p className="text-dark-600">Distance: {landmark.distance}</p>
+              <div key={index} className="p-4 rounded-xl bg-dark-50 border border-dark-200/60 flex items-center justify-between text-xs">
+                <span className="font-semibold text-dark-900">{landmark.name}</span>
+                <span className="text-dark-500 font-medium">{landmark.distance}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Ideal For */}
-      <section className="section-padding bg-dark-50">
-        <div className="container-custom">
-          <h2 className="heading-md mb-8">Who Should Rent in {location.name}?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {location.idealFor.map((type, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                <div className="text-3xl mb-3">👤</div>
-                <p className="text-dark-800">{type}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Pricing Card */}
+      <section className="section-padding bg-dark-50/50 border-t border-b border-dark-100">
+        <div className="container-custom max-w-4xl">
+          <div className="bg-white border border-dark-200/80 rounded-3xl p-6 sm:p-10 shadow-card">
+            <h2 className="heading-md mb-2">Available Vehicle Rates in {location.name}</h2>
+            <p className="text-xs sm:text-sm text-dark-500 mb-8">Free sanitized helmet & 24/7 breakdown support included</p>
 
-      {/* Pricing Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="heading-md mb-8">Rental Pricing in {location.name}</h2>
-          <div className="bg-gradient-to-br from-primary-50 to-white p-8 rounded-lg border-2 border-primary-200">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-              <div>
-                <h3 className="text-2xl font-bold text-dark-900 mb-4">🛵 Scooty Rental</h3>
-                <p className="text-4xl font-bold text-primary-600 mb-2">₹299<span className="text-lg">/day</span></p>
-                <p className="text-dark-600">Honda Activa, TVS Jupiter, Hero Pleasure</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+              <div className="p-5 rounded-2xl bg-dark-50 border border-dark-200/80">
+                <span className="badge-pill text-[11px] uppercase font-semibold mb-2">Scooty Rental</span>
+                <div className="text-3xl font-extrabold text-primary-600 my-1">
+                  ₹299<span className="text-xs font-normal text-dark-500"> / 24 hrs</span>
+                </div>
+                <p className="text-xs text-dark-600 mt-2">Honda Activa 6G, TVS Jupiter, Hero Pleasure+</p>
               </div>
-              <div>
-                <h3 className="text-2xl font-bold text-dark-900 mb-4">🏍️ Bike Rental</h3>
-                <p className="text-4xl font-bold text-primary-600 mb-2">₹499<span className="text-lg">/day</span></p>
-                <p className="text-dark-600">Honda CB Shine, Bajaj Pulsar, Royal Enfield</p>
+
+              <div className="p-5 rounded-2xl bg-dark-50 border border-dark-200/80">
+                <span className="badge-pill text-[11px] uppercase font-semibold mb-2">Motorcycle Rental</span>
+                <div className="text-3xl font-extrabold text-primary-600 my-1">
+                  ₹499+<span className="text-xs font-normal text-dark-500"> / 24 hrs</span>
+                </div>
+                <p className="text-xs text-dark-600 mt-2">Honda CB Shine, Pulsar 150, Royal Enfield 350</p>
               </div>
             </div>
-            <Link href="/pricing" className="btn-primary">
-              View Detailed Pricing
-            </Link>
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={bookAtLocationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-xs sm:text-sm py-3 px-6 justify-center"
+              >
+                <span>Check Live Availability in {location.name}</span>
+                <span>→</span>
+              </a>
+              <Link href="/pricing" className="btn-outline text-xs sm:text-sm py-3 px-5 justify-center">
+                Full Pricing Table
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="section-padding bg-dark-50">
-        <div className="container-custom">
-          <h2 className="heading-md mb-8">Frequently Asked Questions - {location.name}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section className="section-padding bg-white">
+        <div className="container-custom max-w-4xl">
+          <h2 className="heading-md mb-8 text-center">Frequently Asked Questions — {location.name}</h2>
+          <div className="space-y-3.5">
             {location.faq.map((faq, index) => (
               <FAQItem key={index} question={faq.question} answer={faq.answer} />
             ))}
@@ -212,42 +249,21 @@ export default function LocationPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* Internal Links */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="heading-md mb-8">Explore More Rental Locations</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/locations/sigra" className="text-primary-600 hover:underline">Scooty Rental in Sigra</Link>
-            <Link href="/locations/assi-ghat" className="text-primary-600 hover:underline">Rental near Assi Ghat</Link>
-            <Link href="/locations/bhu" className="text-primary-600 hover:underline">Rental near BHU</Link>
-            <Link href="/locations/lanka" className="text-primary-600 hover:underline">Rental in Lanka</Link>
-            <Link href="/locations/varanasi-cantt" className="text-primary-600 hover:underline">Rental at Cantt</Link>
-            <Link href="/locations/mahmoorganj" className="text-primary-600 hover:underline">Rental in Mahmoorganj</Link>
-            <Link href="/locations/godowlia" className="text-primary-600 hover:underline">Rental in Godowlia</Link>
-            <Link href="/locations/sarnath" className="text-primary-600 hover:underline">Rental in Sarnath</Link>
-          </div>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Link href="/scooty-rental-in-varanasi" className="text-primary-600 hover:underline font-semibold">Main Scooty Rental Page</Link>
-            <Link href="/bike-rental-in-varanasi" className="text-primary-600 hover:underline font-semibold">Main Bike Rental Page</Link>
-            <Link href="/blog" className="text-primary-600 hover:underline font-semibold">Travel Guides & Tips</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="section-padding bg-primary-600 text-white">
-        <div className="container-custom text-center">
-          <h2 className="heading-lg mb-4">Ready to Rent in {location.name}?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Book your scooty or bike now for hassle-free exploration of Varanasi
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-50 transition-colors">
-              Book Now
-            </Link>
-            <a href={`tel:${phoneNumber}`} className="bg-dark-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-dark-800 transition-colors">
-              Call: {phoneNumber}
-            </a>
+      {/* Internal Links Breadcrumbs */}
+      <section className="py-12 bg-dark-50 border-t border-dark-100">
+        <div className="container-custom max-w-5xl">
+          <h3 className="text-xs uppercase font-bold text-dark-500 tracking-wider mb-4">
+            Explore Other Pickup Hubs
+          </h3>
+          <div className="flex flex-wrap gap-2 text-xs">
+            <Link href="/locations/sigra" className="badge-pill hover:bg-dark-200 transition-colors">Sigra Hub</Link>
+            <Link href="/locations/assi-ghat" className="badge-pill hover:bg-dark-200 transition-colors">Assi Ghat</Link>
+            <Link href="/locations/bhu" className="badge-pill hover:bg-dark-200 transition-colors">BHU Campus</Link>
+            <Link href="/locations/lanka" className="badge-pill hover:bg-dark-200 transition-colors">Lanka Hub</Link>
+            <Link href="/locations/varanasi-cantt" className="badge-pill hover:bg-dark-200 transition-colors">Cantt Station</Link>
+            <Link href="/locations/mahmoorganj" className="badge-pill hover:bg-dark-200 transition-colors">Mahmoorganj</Link>
+            <Link href="/locations/godowlia" className="badge-pill hover:bg-dark-200 transition-colors">Godowlia</Link>
+            <Link href="/locations/sarnath" className="badge-pill hover:bg-dark-200 transition-colors">Sarnath</Link>
           </div>
         </div>
       </section>
