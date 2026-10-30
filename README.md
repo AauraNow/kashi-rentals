@@ -148,7 +148,7 @@ Track your website visitors and understand user behavior:
 # .env.local or deployment environment variables
 NEXT_PUBLIC_WHATSAPP_NUMBER=917348745464
 NEXT_PUBLIC_BUSINESS_PHONE=+917348745464
-NEXT_PUBLIC_BUSINESS_EMAIL=contact@awaikensai.com
+NEXT_PUBLIC_BUSINESS_EMAIL=contact@awakenais.com
 ```
 
 **Important**: After changing phone numbers, restart your dev server:
@@ -206,7 +206,7 @@ In your Vercel/Netlify dashboard, add these environment variables:
 ```env
 NEXT_PUBLIC_WHATSAPP_NUMBER=917348745464
 NEXT_PUBLIC_BUSINESS_PHONE=+917348745464
-NEXT_PUBLIC_BUSINESS_EMAIL=contact@awaikensai.com
+NEXT_PUBLIC_BUSINESS_EMAIL=contact@awakenais.com
 ```
 
 **Optional for future FastAPI integration:**
@@ -263,4 +263,4 @@ Proprietary - All rights reserved
 
 ## 📞 Support
 
-For support, email contact@awaikensai.com or call +91 7348745464
+For support, email contact@awakenais.com or call +91 7348745464
