@@ -17,7 +17,7 @@ export const siteConfig = {
     phone: process.env.NEXT_PUBLIC_BUSINESS_PHONE || "+917348745464",
     phoneDisplay: "+91 7348745464",
     whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "917348745464",
-    email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || "contact@awaikensai.com",
+    email: process.env.NEXT_PUBLIC_BUSINESS_EMAIL || "contact@awakenais.com",
     address: "Near Varanasi Cantonment Railway Station, Mahmoorganj, Varanasi, UP 221002",
     coordinates: {
       latitude: 25.3176,

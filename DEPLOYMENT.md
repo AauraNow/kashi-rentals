@@ -135,7 +135,7 @@ NEXT_PUBLIC_API_URL=https://api.awakenais.com
 
 # Contact Information
 NEXT_PUBLIC_WHATSAPP_NUMBER=917348745464
-NEXT_PUBLIC_BUSINESS_EMAIL=contact@awaikensai.com
+NEXT_PUBLIC_BUSINESS_EMAIL=contact@awakenais.com
 NEXT_PUBLIC_BUSINESS_PHONE=+917348745464
 
 # Google Analytics (optional)
