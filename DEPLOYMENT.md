@@ -29,7 +29,7 @@ Vercel is the recommended platform for deploying Next.js applications.
 
 3. **Configure Custom Domain** (Optional)
    - Go to Project Settings → Domains
-   - Add your domain (e.g., `varanasibikerental.com`)
+   - Add your domain (e.g., `rentals.awakenais.com`)
    - Update DNS records as shown by Vercel
    - SSL certificate auto-configured
 
@@ -90,11 +90,11 @@ pm2 startup
    sudo apt install nginx
    ```
 
-2. **Configure Nginx** (`/etc/nginx/sites-available/varanasibikerental`)
+2. **Configure Nginx** (`/etc/nginx/sites-available/kashi-rentals`)
    ```nginx
    server {
        listen 80;
-       server_name varanasibikerental.com www.varanasibikerental.com;
+       server_name rentals.awakenais.com;
 
        location / {
            proxy_pass http://localhost:3000;
@@ -109,7 +109,7 @@ pm2 startup
 
 3. **Enable site and restart Nginx**
    ```bash
-   sudo ln -s /etc/nginx/sites-available/varanasibikerental /etc/nginx/sites-enabled/
+   sudo ln -s /etc/nginx/sites-available/kashi-rentals /etc/nginx/sites-enabled/
    sudo nginx -t
    sudo systemctl restart nginx
    ```
@@ -117,7 +117,7 @@ pm2 startup
 4. **Set up SSL with Let's Encrypt**
    ```bash
    sudo apt install certbot python3-certbot-nginx
-   sudo certbot --nginx -d varanasibikerental.com -d www.varanasibikerental.com
+   sudo certbot --nginx -d rentals.awakenais.com
    ```
 
 ## Environment Setup
@@ -128,15 +128,15 @@ Create `.env.production` file:
 
 ```env
 # Base URL (update with your domain)
-NEXT_PUBLIC_BASE_URL=https://varanasibikerental.com
+NEXT_PUBLIC_BASE_URL=https://rentals.awakenais.com
 
 # API Configuration (for future FastAPI integration)
-NEXT_PUBLIC_API_URL=https://api.varanasibikerental.com
+NEXT_PUBLIC_API_URL=https://api.awakenais.com
 
 # Contact Information
-NEXT_PUBLIC_WHATSAPP_NUMBER=919876543210
-NEXT_PUBLIC_BUSINESS_EMAIL=contact@varanasibikerental.com
-NEXT_PUBLIC_BUSINESS_PHONE=+919876543210
+NEXT_PUBLIC_WHATSAPP_NUMBER=917348745464
+NEXT_PUBLIC_BUSINESS_EMAIL=contact@awaikensai.com
+NEXT_PUBLIC_BUSINESS_PHONE=+917348745464
 
 # Google Analytics (optional)
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
@@ -170,7 +170,7 @@ npm run lint
 1. Go to [Google Search Console](https://search.google.com/search-console)
 2. Add property (domain or URL prefix)
 3. Verify ownership (via DNS or HTML file)
-4. Submit sitemap: `https://varanasibikerental.com/sitemap.xml`
+4. Submit sitemap: `https://rentals.awakenais.com/sitemap.xml`
 5. Monitor indexing status
 
 ### Google Business Profile

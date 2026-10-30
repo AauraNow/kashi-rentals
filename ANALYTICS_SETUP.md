@@ -22,7 +22,7 @@ This guide will help you set up Google Analytics 4 (GA4) to track visitors and p
 ## Step 3: Set Up Data Stream
 
 1. Select **"Web"** as your platform
-2. Enter your website URL: `https://varanasibikerental.com`
+2. Enter your website URL: `https://rentals.awakenais.com`
 3. Stream name: `Varanasi Bike Rental - Production`
 4. Click **"Create stream"**
 

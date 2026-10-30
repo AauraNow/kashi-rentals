@@ -1,4 +1,4 @@
-# Varanasi Bike Rental - Next.js 14 Website
+# Kashi Rentals - Next.js 14 Website
 
 A production-ready, SEO-optimized Next.js 14 website for a scooty and bike rental business in Varanasi (Kashi/Banaras). Built with TypeScript, Tailwind CSS, and designed to dominate local search results.
 
@@ -146,9 +146,9 @@ Track your website visitors and understand user behavior:
 
 ```env
 # .env.local or deployment environment variables
-NEXT_PUBLIC_WHATSAPP_NUMBER=919876543210
-NEXT_PUBLIC_BUSINESS_PHONE=+91 98765 43210
-NEXT_PUBLIC_BUSINESS_EMAIL=contact@varanasibikerental.com
+NEXT_PUBLIC_WHATSAPP_NUMBER=917348745464
+NEXT_PUBLIC_BUSINESS_PHONE=+917348745464
+NEXT_PUBLIC_BUSINESS_EMAIL=contact@awaikensai.com
 ```
 
 **Important**: After changing phone numbers, restart your dev server:
@@ -204,9 +204,9 @@ Or connect your GitHub repository to Vercel for automatic deployments.
 In your Vercel/Netlify dashboard, add these environment variables:
 
 ```env
-NEXT_PUBLIC_WHATSAPP_NUMBER=919876543210
-NEXT_PUBLIC_BUSINESS_PHONE=+91 98765 43210
-NEXT_PUBLIC_BUSINESS_EMAIL=contact@varanasibikerental.com
+NEXT_PUBLIC_WHATSAPP_NUMBER=917348745464
+NEXT_PUBLIC_BUSINESS_PHONE=+917348745464
+NEXT_PUBLIC_BUSINESS_EMAIL=contact@awaikensai.com
 ```
 
 **Optional for future FastAPI integration:**
@@ -263,4 +263,4 @@ Proprietary - All rights reserved
 
 ## 📞 Support
 
-For support, email contact@varanasibikerental.com or call +91 98765 43210
+For support, email contact@awaikensai.com or call +91 7348745464
