@@ -60,7 +60,9 @@ function getBlogPosts(): BlogPost[] {
 
 export default function BlogPage() {
   const posts = getBlogPosts();
-  const categories = ['Travel Guides', 'Comparison', 'Route Guides', 'Hyperlocal'];
+  // Preferred order first; any new category used by a post is appended so it never silently disappears
+  const preferredCategories = ['Festival Guides', 'Travel Guides', 'Comparison', 'Route Guides', 'Hyperlocal'];
+  const categories = Array.from(new Set([...preferredCategories, ...posts.map((post) => post.frontmatter.category)]));
 
   return (
     <>

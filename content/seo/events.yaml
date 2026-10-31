@@ -1,0 +1,144 @@
+# Varanasi demand calendar for the daily SEO pipeline (.claude/skills/seo-article).
+#
+# Festival dates follow the Hindu lunar calendar and move every year. Rules:
+#   - status: confirmed   only when 2+ independent sources (ideally a panchang such as drikpanchang.com) agree
+#   - status: unverified  anything else; the job must verify before writing date-specific copy
+#   - Add next year's dates as soon as they are published.
+#
+# publish_lead_days: how long before the event the article should be live.
+# Search interest builds 3-6 weeks ahead, and a new page needs time to get indexed.
+#
+# demand: expected tourist surge (high | medium | low)
+# rental_angle: why a two-wheeler is genuinely useful for this event. Be honest:
+#   if vehicles are banned near the venue, say so and sell the part that works.
+
+events:
+  - id: dev-deepawali
+    name: Dev Deepawali (Kartik Purnima)
+    dates:
+      2026: { start: "2026-11-24", status: confirmed, source: "hindutone.com, festival calendars; Kartik Purnima" }
+    publish_lead_days: 35
+    demand: high
+    rental_angle: >
+      Ghat-side roads become no-vehicle zones from late morning and autos are restricted, so cabs surge.
+      A scooty gets you to the outer parking points (Maidagin, Beniabagh, Sigra, Luxa) early,
+      then you walk in. Also useful for the days around it, since hotels near the ghats sell out.
+    keywords:
+      - dev deepawali varanasi 2026
+      - dev diwali varanasi date
+      - how to reach ghats on dev deepawali
+      - dev deepawali parking varanasi
+      - dev diwali boat booking
+    related_posts: [best-way-to-travel-in-varanasi, 2-day-varanasi-itinerary]
+
+  - id: ganga-mahotsav
+    name: Ganga Mahotsav
+    dates:
+      2026: { start: "2026-11-21", end: "2026-11-24", status: unverified, source: "hindu-blog.com; runs up to Kartik Purnima" }
+    publish_lead_days: 30
+    demand: medium
+    rental_angle: Multi-day cultural festival, so visitors stay longer and multi-day rentals make sense.
+    keywords: [ganga mahotsav 2026, ganga mahotsav varanasi dates, varanasi cultural festival november]
+    related_posts: [2-day-varanasi-itinerary]
+
+  - id: chhath-puja
+    name: Chhath Puja
+    dates:
+      2026: { start: "2026-11-15", status: unverified, source: "sources disagree (Nov 14-18)" }
+    publish_lead_days: 21
+    demand: medium
+    rental_angle: Pre-dawn and sunset ghat visits when autos are scarce; heavy crowds at ghats.
+    keywords: [chhath puja varanasi 2026, chhath ghat varanasi]
+    related_posts: [best-way-to-travel-in-varanasi]
+
+  - id: winter-season
+    name: Winter peak season and New Year
+    dates:
+      2026: { start: "2026-12-15", end: "2027-01-31", status: confirmed, source: "seasonal; not a lunar date" }
+    publish_lead_days: 40
+    demand: high
+    rental_angle: Peak foreign and domestic tourist season; pleasant riding weather for Sarnath and Ramnagar day trips.
+    keywords: [varanasi in december, varanasi new year 2027, varanasi winter itinerary, varanasi fog travel tips]
+    related_posts: [2-day-varanasi-itinerary, assi-ghat-to-sarnath-route]
+
+  - id: mahashivratri
+    name: Mahashivratri
+    dates: {}
+    publish_lead_days: 30
+    demand: high
+    rental_angle: Huge Kashi Vishwanath crowds and road diversions around Godowlia; plan parking and timing.
+    keywords: [mahashivratri varanasi, kashi vishwanath mahashivratri darshan, mahashivratri varanasi traffic]
+    related_posts: [best-way-to-travel-in-varanasi]
+
+  - id: holi
+    name: Holi and Masane ki Holi
+    dates: {}
+    publish_lead_days: 30
+    demand: high
+    rental_angle: Masane ki Holi (Manikarnika) draws visitors a few days before Holi; riding safety on Holi day itself matters.
+    keywords: [holi in varanasi, masane ki holi varanasi, holi varanasi safety tips]
+    related_posts: [2-day-varanasi-itinerary]
+
+  - id: buddha-purnima
+    name: Buddha Purnima
+    dates: {}
+    publish_lead_days: 25
+    demand: medium
+    rental_angle: Sarnath is the main draw; a 10 km ride from the city.
+    keywords: [buddha purnima sarnath, sarnath buddha purnima celebration, varanasi to sarnath]
+    related_posts: [assi-ghat-to-sarnath-route]
+
+  - id: ganga-dussehra
+    name: Ganga Dussehra
+    dates: {}
+    publish_lead_days: 25
+    demand: medium
+    rental_angle: Summer ghat festival; early-morning and evening travel to beat the heat.
+    keywords: [ganga dussehra varanasi, ganga dussehra ghat aarti]
+    related_posts: [best-way-to-travel-in-varanasi]
+
+  - id: sawan
+    name: Sawan month and Kanwar Yatra
+    dates: {}
+    publish_lead_days: 30
+    demand: high
+    rental_angle: Month-long pilgrim surge with Kanwar route closures; monsoon riding tips and alternate routes.
+    keywords: [sawan varanasi, kanwar yatra varanasi traffic, kashi vishwanath sawan somvar]
+    related_posts: [best-way-to-travel-in-varanasi]
+
+  - id: nag-nathaiya
+    name: Nag Nathaiya (Tulsi Ghat)
+    dates: {}
+    publish_lead_days: 21
+    demand: low
+    rental_angle: One-evening event at Tulsi Ghat, near the Assi and Lanka hubs.
+    keywords: [nag nathaiya varanasi, tulsi ghat nag nathaiya]
+    related_posts: []
+
+  - id: ramnagar-ramlila
+    name: Ramnagar Ramlila
+    dates: {}
+    publish_lead_days: 30
+    demand: medium
+    rental_angle: Month-long nightly performances across the river at Ramnagar; a scooty beats late-night autos back.
+    keywords: [ramnagar ramlila, ramnagar ramlila timings, how to reach ramnagar fort]
+    related_posts: []
+
+  - id: diwali
+    name: Diwali
+    dates:
+      2026: { start: "2026-11-08", status: confirmed, source: "multiple festival calendars and bank holiday lists" }
+    publish_lead_days: 30
+    demand: medium
+    rental_angle: Festive shopping and ghat visits; Dev Deepawali follows about two weeks later.
+    keywords: [diwali in varanasi, varanasi diwali celebration]
+    related_posts: [2-day-varanasi-itinerary]
+
+  - id: bhu-admissions
+    name: BHU admissions and new academic session
+    dates: {}
+    publish_lead_days: 30
+    demand: medium
+    rental_angle: Students and parents arriving; monthly rentals near the Lanka and BHU hubs.
+    keywords: [bhu admission 2027 accommodation, monthly scooty rental bhu, bhu campus transport]
+    related_posts: [bhu-student-transport-guide]

@@ -1,11 +1,10 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import { marked } from 'marked';
 import Link from 'next/link';
+import StructuredData from '@/components/StructuredData';
 import { siteConfig, getWhatsAppBookingUrl } from '@/lib/config';
+import { getPost, getPostSlugs, getLastModified, extractFaqs } from '@/lib/blog';
 
 // Configure marked
 marked.setOptions({
@@ -20,31 +19,19 @@ interface BlogPostProps {
 }
 
 export async function generateStaticParams() {
-  const blogDirectory = path.join(process.cwd(), 'content/blog');
-
-  if (!fs.existsSync(blogDirectory)) {
-    return [];
-  }
-
-  const filenames = fs.readdirSync(blogDirectory);
-
-  return filenames.map((filename) => ({
-    slug: filename.replace(/\.mdx$/, ''),
-  }));
+  return getPostSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: BlogPostProps): Promise<Metadata> {
-  const blogDirectory = path.join(process.cwd(), 'content/blog');
-  const filePath = path.join(blogDirectory, `${params.slug}.mdx`);
+  const post = getPost(params.slug);
 
-  if (!fs.existsSync(filePath)) {
+  if (!post) {
     return {
       title: 'Blog Post Not Found',
     };
   }
 
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  const { data } = matter(fileContents);
+  const data = post.frontmatter;
 
   return {
     title: `${data.title} | Kashi Rentals Blog`,
@@ -58,27 +45,75 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
       description: data.description,
       url: `${siteConfig.url}/blog/${params.slug}`,
       type: 'article',
+      publishedTime: data.date,
+      modifiedTime: getLastModified(data),
     },
   };
 }
 
 export default function BlogPost({ params }: BlogPostProps) {
-  const blogDirectory = path.join(process.cwd(), 'content/blog');
-  const filePath = path.join(blogDirectory, `${params.slug}.mdx`);
+  const post = getPost(params.slug);
 
-  if (!fs.existsSync(filePath)) {
+  if (!post) {
     notFound();
   }
 
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  const { data, content } = matter(fileContents);
+  const { frontmatter: data, content } = post;
+  const postUrl = `${siteConfig.url}/blog/${params.slug}`;
+  const faqs = extractFaqs(content);
 
   // Remove h1 from content (title is already shown in header)
   const contentWithoutH1 = content.replace(/^# .*$/gm, '');
   const htmlContent = marked.parse(contentWithoutH1) as string;
 
+  const organization = {
+    "@type": "Organization",
+    "name": siteConfig.fullBrandName,
+    "url": siteConfig.url,
+    "logo": `${siteConfig.url}/logo.png`,
+  };
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": data.title,
+    "description": data.description,
+    "datePublished": data.date,
+    "dateModified": getLastModified(data),
+    "keywords": data.keywords?.join(', '),
+    "articleSection": data.category,
+    "inLanguage": "en-IN",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": postUrl },
+    "image": `${siteConfig.url}/logo.png`,
+    "author": organization,
+    "publisher": organization,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": siteConfig.url },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${siteConfig.url}/blog` },
+      { "@type": "ListItem", "position": 3, "name": data.title, "item": postUrl },
+    ],
+  };
+
+  const faqSchema = faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.answer },
+    })),
+  } : null;
+
   return (
     <article>
+      <StructuredData data={articleSchema} />
+      <StructuredData data={breadcrumbSchema} />
+      {faqSchema && <StructuredData data={faqSchema} />}
       {/* Header */}
       <section className="relative overflow-hidden pt-10 pb-12 md:pt-14 md:pb-16 bg-gradient-to-b from-dark-50/70 via-white to-white border-b border-dark-100">
         <div className="container-custom max-w-3xl px-4 sm:px-6">
@@ -104,6 +139,13 @@ export default function BlogPost({ params }: BlogPostProps) {
 
           <div className="flex items-center gap-4 text-xs text-dark-500 pt-4 border-t border-dark-100">
             <span>📅 {new Date(data.date).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <span>•</span>
+            {data.updated && (
+              <>
+                <span>•</span>
+                <span>Updated {new Date(data.updated).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+              </>
+            )}
             <span>•</span>
             <span>⏱️ {data.readTime}</span>
             <span>•</span>

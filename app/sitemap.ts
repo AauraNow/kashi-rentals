@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/lib/config';
 import { locations } from '@/lib/locations';
-import fs from 'fs';
-import path from 'path';
+import { getAllPosts, getLastModified } from '@/lib/blog';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || siteConfig.url;
@@ -73,19 +72,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  // Blog posts
-  let blogPages: MetadataRoute.Sitemap = [];
-  const blogDirectory = path.join(process.cwd(), 'content/blog');
-
-  if (fs.existsSync(blogDirectory)) {
-    const filenames = fs.readdirSync(blogDirectory);
-    blogPages = filenames.map((filename) => ({
-      url: `${baseUrl}/blog/${filename.replace(/\.mdx$/, '')}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    }));
-  }
+  // Blog posts: lastModified comes from the post itself so refreshes are visible to crawlers
+  const blogPages: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(getLastModified(post.frontmatter)),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
 
   return [...staticPages, ...locationPages, ...blogPages];
 }

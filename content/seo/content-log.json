@@ -1,0 +1,29 @@
+{
+  "runs": [
+    {
+      "date": "2026-10-31",
+      "action": "new",
+      "slug": "dev-deepawali-varanasi-2026-guide",
+      "event": "dev-deepawali",
+      "target_keyword": "dev deepawali varanasi 2026",
+      "notes": "First article, written with the owner to set the template. Traffic rules are from the 2022 official advisory and 2025 secondary sources; refresh when the 2026 police advisory is out (usually 2-3 days before)."
+    }
+  ],
+  "backlog": [
+    {
+      "idea": "Refresh dev-deepawali-varanasi-2026-guide with the official 2026 traffic advisory",
+      "event": "dev-deepawali",
+      "due": "2026-11-21"
+    },
+    {
+      "idea": "Varanasi in December: weather, fog, what to pack, best day trips by scooty",
+      "event": "winter-season",
+      "due": "2026-11-15"
+    },
+    {
+      "idea": "Add FAQ sections to the 7 older posts that have none (FAQPage rich results)",
+      "event": null,
+      "due": null
+    }
+  ]
+}
